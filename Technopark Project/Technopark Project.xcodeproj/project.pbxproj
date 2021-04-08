@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */; };
 		35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */; };
-		35B0AED6261DCFBB00CBBBE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED5261DCFBB00CBBBE0 /* ViewController.swift */; };
+		35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED5261DCFBB00CBBBE0 /* MainViewController.swift */; };
 		35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AEDA261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld */; };
 		35B0AEDE261DCFBE00CBBBE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */; };
 		35B0AEE1261DCFBE00CBBBE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B0AEDF261DCFBE00CBBBE0 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 		35B0AECE261DCFBB00CBBBE0 /* Technopark Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Technopark Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		35B0AED5261DCFBB00CBBBE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		35B0AED5261DCFBB00CBBBE0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		35B0AEDB261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Technopark_Project.xcdatamodel; sourceTree = "<group>"; };
 		35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35B0AEE0261DCFBE00CBBBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 			children = (
 				35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */,
 				35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */,
-				35B0AED5261DCFBB00CBBBE0 /* ViewController.swift */,
+				35B0AED5261DCFBB00CBBBE0 /* MainViewController.swift */,
 				35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */,
 				35B0AEDF261DCFBE00CBBBE0 /* LaunchScreen.storyboard */,
 				35B0AEE2261DCFBE00CBBBE0 /* Info.plist */,
@@ -205,7 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */,
-				35B0AED6261DCFBB00CBBBE0 /* ViewController.swift in Sources */,
+				35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */,
 				35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
 			);

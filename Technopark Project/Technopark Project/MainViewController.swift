@@ -8,7 +8,7 @@
 import UIKit
 import PinLayout
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
