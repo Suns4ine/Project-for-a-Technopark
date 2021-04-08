@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PinLayout
 
 class ViewController: UIViewController {
 
