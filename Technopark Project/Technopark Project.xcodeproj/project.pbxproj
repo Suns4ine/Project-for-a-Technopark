@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3538E7C3264E35B400D8CB58 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538E7C2264E35B400D8CB58 /* Colors.swift */; };
 		35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */; };
 		35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */; };
 		35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED5261DCFBB00CBBBE0 /* MainViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3538E7C2264E35B400D8CB58 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		35B0AECE261DCFBB00CBBBE0 /* Technopark Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Technopark Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */,
 				35B0AED5261DCFBB00CBBBE0 /* MainViewController.swift */,
 				35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */,
+				3538E7C2264E35B400D8CB58 /* Colors.swift */,
 				35B0AEDF261DCFBE00CBBBE0 /* LaunchScreen.storyboard */,
 				35B0AEE2261DCFBE00CBBBE0 /* Info.plist */,
 				35B0AEDA261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld */,
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */,
+				3538E7C3264E35B400D8CB58 /* Colors.swift in Sources */,
 				35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */,
 				35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
