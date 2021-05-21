@@ -8,19 +8,17 @@
 import Foundation
 import UIKit
 
-enum Color: String {
-    case button = "9CB9D1"
-    case text = "E0E9F2"
-    case icon
-    case view
-    case underline
-    case backGroundMain = "313844"
-    case backGroundOther = "7087A4"
-    case backGroundSetting = "597387"
-    case error = "cc0000"
-    case success = "3A9063"
-    case other = "f0ff00"
-}
+    let buttonColor = 0x9CB9D1
+    let textColor = 0xE0E9F2
+    let iconColor = 0xE0E9F2
+    let viewColor = 0
+    let underlineColor = 0
+    let backGroundMainColor = 0x313844
+    let backGroundOtherColor = 0x7087A4
+    let backGroundSettingColor = 0x597387
+    let errorColor = 0xcc0000
+    let successColor = 0x3A9063
+    let otherColor = 0xf0ff00
 
 extension UIColor {
 
@@ -43,4 +41,15 @@ extension CGColor {
 
     }
 
+}
+
+extension UIImage {
+    func tinted(with color: UIColor, isOpaque: Bool = false) -> UIImage? {
+        let format = imageRendererFormat
+        format.opaque = isOpaque
+        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            color.set()
+            withRenderingMode(.alwaysTemplate).draw(at: .zero)
+        }
+    }
 }

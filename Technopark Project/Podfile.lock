@@ -1,5 +1,5 @@
 PODS:
-  - PinLayout (1.9.3)
+  - PinLayout (1.9.4)
 
 DEPENDENCIES:
   - PinLayout
@@ -9,7 +9,7 @@ SPEC REPOS:
     - PinLayout
 
 SPEC CHECKSUMS:
-  PinLayout: 4d8733121f8687edcc8f00c19bf1379d12808767
+  PinLayout: 0d73cf5bea456b8112429c984de377839b9ec34c
 
 PODFILE CHECKSUM: 1c03639a48ad5206e2c5b862e555d8ff6cd619f1
 
