@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
     let buttonColor = 0x9CB9D1
-    let textColor = 0xE0E9F2
+    let textColorLight = 0xE0E9F2
     let iconColor = 0xE0E9F2
     let viewColor = 0
     let underlineColor = 0
@@ -19,6 +19,7 @@ import UIKit
     let errorColor = 0xcc0000
     let successColor = 0x3A9063
     let otherColor = 0xf0ff00
+    let shadowColor = 0x06070D //25%
 
 extension UIColor {
 
@@ -31,6 +32,9 @@ extension UIColor {
         self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
     }
 
+    var buttonColor: UIColor { return UIColor(hex: 0x9CB9D1) }
+    var textColor: UIColor { return UIColor(hex: 0xE0E9F2) }
+    
 }
 
 extension CGColor {

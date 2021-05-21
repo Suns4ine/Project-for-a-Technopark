@@ -9,4 +9,6 @@ import Foundation
 
 struct Vocabulary {
     var name: String
+    var status: Int
+    var succses: Bool
 }

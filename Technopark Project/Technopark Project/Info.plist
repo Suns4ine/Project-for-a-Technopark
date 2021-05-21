@@ -58,5 +58,26 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Inter-Black.ttf</string>
+		<string>Inter-Blackltalic.ttf</string>
+		<string>Inter-Blod.ttf</string>
+		<string>Inter-Boldltalic.ttf</string>
+		<string>Inter-ExtraBold.ttf</string>
+		<string>Inter-ExtraBoldltalic.ttf</string>
+		<string>Inter-ExtraLightBETA.ttf</string>
+		<string>Inter-ExtraLightltalicBETA.ttf</string>
+		<string>Inter-ltalic.ttf</string>
+		<string>Inter-LightBETA.ttf</string>
+		<string>Inter-LightltalicBETA.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-Mediumltalic.ttf</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+		<string>Inter-SemiBoldtalic.ttf</string>
+		<string>Inter-ThinBETA.ttf</string>
+		<string>Inter-ThinltalicBETA.ttf</string>
+	</array>
 </dict>
 </plist>

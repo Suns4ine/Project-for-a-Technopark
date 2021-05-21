@@ -8,43 +8,25 @@
 import UIKit
 import PinLayout
 
-struct VocabularyCell {
-    var image: UIImage?
-    var title: String
-    var vocabularies: [Vocabulary]
-}
-
 class MainViewController: UIViewController {
     
-    var vocabularies: [Vocabulary] = [.init(name: "Растения") , .init(name: "Глаголы"), .init(name: "Учеба"), .init(name: "Школа")]
+    var vocabularies: [Vocabulary] = [.init(name: "Растения", status: 100, succses: true) , .init(name: "Глаголы", status: 56, succses: false), .init(name: "Учеба", status: 12, succses: false), .init(name: "Школа", status: 99, succses: false)]
     
     private var tableView = UITableView()
-    private var headerView = UIView()
+    private var headerView = HeaderView(frame: .zero, account: Account(firstName: "Николай", lastName: "Шумкин", vocabulary: []))
     private var reminder = UIImageView(image: UIImage(named: "fi-rr-bell 1"))
-    private var accountImage = UIImageView(image: UIImage(named: "fi-rr-user 1"))
     
-    private var buttonHeader: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .none
-        button.titleLabel?.textColor = UIColor(hex: textColor)
-        button.setTitle("QEFEWFErasdfgraeersdfgaw\naerd3qwerdre", for: .normal)
-        button.titleLabel?.numberOfLines = 0
-        button.titleLabel?.textAlignment = .center
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    lazy var vocabularyCells: [VocabularyCell] = [
-        .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", vocabularies: vocabularies),
-        .init(image: UIImage(named: "fitness 1"), title: "упражнения", vocabularies: vocabularies)]
+    lazy var vocabularyCells: [EducationalMaterialModel] = [
+        .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", material: [].newArrayEducation(ar: vocabularies)),
+        .init(image: UIImage(named: "fitness 1"), title: "Упражнения", material: [.exercises(.init(name: "Уить слова")), .exercises(.init(name: "Хардкор")), .exercises(.init(name: "10 слов дня")), .exercises(.init(name: "Салянка"))])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(hex: backGroundMainColor)
-        headerView.backgroundColor = UIColor(hex: backGroundOtherColor)
-        accountImage.image = accountImage.image?.tinted(with: UIColor(hex: iconColor))
+        
         reminder.image = reminder.image?.tinted(with: UIColor(hex: iconColor))
         
+        tableView.alwaysBounceVertical = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.frame
@@ -69,37 +51,15 @@ class MainViewController: UIViewController {
             .size(24)
             .right(21.25)
         
-        buttonHeader.pin
-            .top(53)
-            .left(19)
-            .right(19)
-            .bottom(5)
-        
-        buttonHeader.titleLabel?.pin
-            .top()
-            .right()
-
-        if buttonHeader.titleLabel != nil  {
-        accountImage.pin
-            .size(24)
-            .left(8)
-            .bottom(41)
-            
-        }
-        
         tableView.pin
             .below(of: headerView, aligned: .center)
-            .left()
-            .right()
             .bottom()
     }
 
     private func setup() {
-        self.view.addSubview(headerView)
-        self.view.addSubview(tableView)
-        self.view.addSubview(reminder)
-        self.headerView.addSubview(buttonHeader)
-        self.buttonHeader.addSubview(accountImage)
+        [headerView, tableView, reminder].forEach{
+            self.view.addSubview($0)
+        }
     }
 
 }
@@ -116,17 +76,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 for: indexPath) as? MainTableViewCell else { return .init() }
         
         cell.configure(with: vocabularyCells[indexPath.row])
-        //cell.textLabel?.text = "123"
         cell.backgroundColor = .clear
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 248
+        return 298
     }
     
 }
-
-
-
