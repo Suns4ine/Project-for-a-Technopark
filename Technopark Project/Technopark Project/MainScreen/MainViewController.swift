@@ -10,13 +10,25 @@ import PinLayout
 
 class MainViewController: UIViewController {
     
-    var vocabularies: [Vocabulary] = [.init(name: "Растения", status: 100, succses: true) , .init(name: "Глаголы", status: 56, succses: false), .init(name: "Учеба", status: 12, succses: false), .init(name: "Школа", status: 99, succses: false)]
+    private var vocabularies: [Vocabulary] = [.init(name: "Растения", status: 100, succses: true) , .init(name: "Глаголы", status: 56, succses: false), .init(name: "Учеба", status: 12, succses: false), .init(name: "Школа", status: 99, succses: false)]
     
-    private var tableView = UITableView()
-    private var headerView = HeaderView(frame: .zero, account: Account(firstName: "Николай", lastName: "Шумкин", vocabulary: []))
-    private var reminder = UIImageView(image: UIImage(named: "fi-rr-bell 1"))
+    private var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.alwaysBounceVertical = false
+        tableView.backgroundColor = .clear
+        return tableView
+    }()
+    private var headerView = HeaderView(frame: .zero, account:
+                                            Account(firstName: "Николай",
+                                            lastName: "Шумкин", vocabulary: []))
+    private var reminder: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "fi-rr-bell 1")
+        imageView.image = imageView.image?.tinted(with: UIColor(hex: iconColor))
+        return imageView
+    }()
     
-    lazy var vocabularyCells: [EducationalMaterialModel] = [
+    private lazy var vocabularyCells: [EducationalMaterialModel] = [
         .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", material: [].newArrayEducation(ar: vocabularies)),
         .init(image: UIImage(named: "fitness 1"), title: "Упражнения", material: [.exercises(.init(name: "Уить слова")), .exercises(.init(name: "Хардкор")), .exercises(.init(name: "10 слов дня")), .exercises(.init(name: "Салянка"))])]
     
@@ -24,13 +36,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(hex: backGroundMainColor)
         
-        reminder.image = reminder.image?.tinted(with: UIColor(hex: iconColor))
-        
-        tableView.alwaysBounceVertical = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.frame
-        tableView.backgroundColor = .none
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
         
      setup()
@@ -65,22 +73,20 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
+    //Колличество ячейек
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vocabularyCells.count
     }
-    
+    //Вид ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "MainTableViewCell",
                 for: indexPath) as? MainTableViewCell else { return .init() }
         
         cell.configure(with: vocabularyCells[indexPath.row])
-        cell.backgroundColor = .clear
-        
         return cell
     }
-    
+    //Высота ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 298
     }

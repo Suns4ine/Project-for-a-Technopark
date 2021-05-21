@@ -11,22 +11,48 @@ import PinLayout
 
 final class MainTableViewCell: UITableViewCell {
     
-    private let titleLabel = UILabel()
-    private let subTitleLabel = UILabel()
-    private let titleIcon = UIImageView()
-    
-    private var mainCollectionView: UICollectionView = {
-        let collectionLayout = UICollectionViewFlowLayout()
-        collectionLayout.scrollDirection = .horizontal
-        return UICollectionView(frame: .init(), collectionViewLayout: collectionLayout)
+    private var educationalMaterial = [EducationalMaterial]()
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = standartFont
+        label.textColor = UIColor(hex: textColorLight)
+        return label
     }()
     
-    private var educationalMaterial = [EducationalMaterial]()
+    private let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(hex: textColorLight)
+        label.numberOfLines = 3
+        label.textAlignment = .center
+        label.font = standartFont
+        return label
+    }()
+    
+    private let titleIcon: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
+    private let mainCollectionView: UICollectionView = {
+        let collectionLayout = UICollectionViewFlowLayout()
+        collectionLayout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .init(), collectionViewLayout: collectionLayout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+        return collectionView
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
+        self.backgroundColor = .clear
+        
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
+        mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
         
         setup()
     }
@@ -35,35 +61,10 @@ final class MainTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    private func setup() {
-        [titleLabel, titleIcon, mainCollectionView, subTitleLabel].forEach {
-            contentView.addSubview($0)
-        }
-    }
-    
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
-        mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
-        
-        titleLabel.font = UIFont(name: "Inter-SemiBold", size: 24)
-        titleLabel.textColor = UIColor(hex: textColorLight)
-        
-        mainCollectionView.backgroundColor = .clear
-        mainCollectionView.showsHorizontalScrollIndicator = false
-        mainCollectionView.contentInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        
-        titleIcon.image = titleIcon.image?.tinted(with: UIColor(hex: iconColor))
-        
-        subTitleLabel.textColor = UIColor(hex: textColorLight)
-        subTitleLabel.font = UIFont(name: subTitleLabel.font.fontName, size: 24)
-        subTitleLabel.numberOfLines = 3
-        subTitleLabel.textAlignment = .center
-        subTitleLabel.font = UIFont(name: "Inter-SemiBold", size: 24)
+        titleIcon.image = titleIcon.image?.tinted(with: UIColor(hex: iconColor)) // почему-то раньше оно не перекрашиваетя
         
         titleLabel.pin
             .sizeToFit()
@@ -98,6 +99,12 @@ final class MainTableViewCell: UITableViewCell {
         educationalMaterial = model.material
         subTitleLabel.text = "У вас еще нет словарей. Создайте свой или возьмите готовый."
     }
+    
+    private func setup() {
+        [titleLabel, titleIcon, mainCollectionView, subTitleLabel].forEach {
+            contentView.addSubview($0)
+        }
+    }
 }
 
 
@@ -112,12 +119,10 @@ extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
     //Вызов нужной ячейки
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {
-            return .init()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell",
+                                                            for: indexPath) as? MainCollectionViewCell else { return .init() }
         
         cell.configure(with: educationalMaterial[indexPath.row])
-        
         return cell
     }
     

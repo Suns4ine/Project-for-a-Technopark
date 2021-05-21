@@ -13,11 +13,27 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     private var succses = false
     private var vocabulary = false
-    private let titleLabel = UILabel()
-    private let subTitleLabel = UILabel()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = standartFont
+        label.numberOfLines = 3
+        label.textColor = UIColor(hex: textColorLight)
+        return label
+    }()
+    
+    private let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = standartFont
+        label.numberOfLines = 1
+        label.textColor = UIColor(hex: textColorLight)
+        return label
+    }()
+    
     private let iconSuccses: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-check")
+        imageView.image = imageView.image?.tinted(with: UIColor(hex: iconColor))
         return imageView
     }()
     
@@ -25,8 +41,8 @@ final class MainCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor(hex: buttonColor)
         self.layer.cornerRadius = 8
+        backgroundColor = UIColor(hex: buttonColor)
         layer.shadowColor = UIColor(hex: shadowColor).cgColor
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = 0.25
@@ -39,28 +55,14 @@ final class MainCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
-        [titleLabel, subTitleLabel, iconSuccses].forEach {
-            addSubview($0)
-        }
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         if succses == true {
-            
             titleLabel.textColor = UIColor(hex: successColor)
             subTitleLabel.textColor = UIColor(hex: successColor)
-            iconSuccses.image = iconSuccses.image?.tinted(with: UIColor(hex: successColor))
-        } else {
-            titleLabel.textColor = UIColor(hex: textColorLight)
-            subTitleLabel.textColor = UIColor(hex: textColorLight)
+            iconSuccses.image = iconSuccses.image?.tinted(with: UIColor(hex: successColor))//successColor))
         }
-        titleLabel.font = UIFont(name: "Inter-SemiBold", size: 24)
-        titleLabel.numberOfLines = 3
-        subTitleLabel.font = UIFont(name: "Inter-SemiBold", size: 24)
-        subTitleLabel.numberOfLines = 1
         
         titleLabel.pin
             .sizeToFit()
@@ -92,9 +94,12 @@ final class MainCollectionViewCell: UICollectionViewCell {
             vocabulary = true
         case .exercises(let exercises):
             titleLabel.text = exercises.name
-        default:
-            break
         }
     }
-
+    
+    private func setup() {
+        [titleLabel, subTitleLabel, iconSuccses].forEach {
+            addSubview($0)
+        }
+    }
 }

@@ -26,7 +26,6 @@ extension Array {
         for element in ar {
             newArr.append(.vocabulary(element))
         }
-        
         return newArr
     }
 }

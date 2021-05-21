@@ -11,15 +11,22 @@ import PinLayout
 
 final class HeaderView: UIView {
     
+    private var account: Account?
     private let buttonSetting = UIButton()
-    private let labelNamed: UILabel = {
+    
+    private lazy var labelNamed: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(hex: textColorLight)
         label.textAlignment = .center
         label.numberOfLines = 2
+        label.font = standartFont
+        label.text = account != nil ?
+            "\(String(describing: account!.firstName)) \(String(describing: account!.lastName))" :
+            "\(Bundle.appName())"
+        
         return label
     }()
-    private var account: Account?
+    
     private let iconAccount: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-user 1")
@@ -37,13 +44,9 @@ final class HeaderView: UIView {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
+        
         setup()
     }
-    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setup()
-//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -51,10 +54,6 @@ final class HeaderView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        labelNamed.font = UIFont(name: "Inter-SemiBold", size: 24)
-        //buttonSetting.backgroundColor = .green
-        labelNamed.text = account != nil ? "\(String(describing: account!.firstName)) \(String(describing: account!.lastName))" : "Бебра"
         
         buttonSetting.pin
             .top(35)
@@ -65,8 +64,6 @@ final class HeaderView: UIView {
         labelNamed.pin
             .height(buttonSetting.frame.height - 12)
             .width(buttonSetting.frame.width - 10 - iconAccount.frame.width)
-            //.size(buttonSetting.frame.width - 10)
-            //.sizeToFit()
             .top()
             .hCenter()
         

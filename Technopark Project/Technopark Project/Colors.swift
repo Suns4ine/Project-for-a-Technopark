@@ -21,6 +21,8 @@ import UIKit
     let otherColor = 0xf0ff00
     let shadowColor = 0x06070D //25%
 
+    let standartFont = UIFont(name: "Inter-SemiBold", size: 24)
+
 extension UIColor {
 
     convenience init(hex: Int) {
