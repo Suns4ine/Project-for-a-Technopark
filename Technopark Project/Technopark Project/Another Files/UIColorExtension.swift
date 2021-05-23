@@ -13,7 +13,7 @@ extension UIColor {
     static let buttonColor = UIColor(hex: 0x9CB9D1)
     static let textColorLight = UIColor(hex: 0xE0E9F2)
     static let iconColor = UIColor(hex: 0xE0E9F2)
-    static let viewColor = UIColor(hex: 0x9CB9D1)
+    static let viewColor = UIColor(hex: 0xE0E9F2)
     static let underlineColor = UIColor(hex: 0x9CB9D1)
     static let backGroundMainColor = UIColor(hex: 0x313844)
     static let backGroundOtherColor = UIColor(hex: 0x7087A4)
@@ -31,10 +31,6 @@ extension UIColor {
         )
         self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
     }
-
-    var buttonColor: UIColor { return UIColor(hex: 0x9CB9D1) }
-    var textColor: UIColor { return UIColor(hex: 0xE0E9F2) }
-    
 }
 
 extension CGColor {

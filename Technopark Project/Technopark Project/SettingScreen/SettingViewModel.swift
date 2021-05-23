@@ -10,5 +10,5 @@ import UIKit
 
 struct SettingViewModel {
     var account: Account?
-    var root: UIViewController
+    var root: MainViewController
 }

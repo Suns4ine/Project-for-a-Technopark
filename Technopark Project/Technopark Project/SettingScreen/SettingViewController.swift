@@ -95,9 +95,5 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugPrint(self.navigationController?.viewControllers)
-        //self.navigationController?.dismiss(animated: true, completion: nil)
-        //self.present(MainViewController(), animated: true, completion: nil)
-        self.present(self.navigationController?.viewControllers.first ?? self, animated: true, completion: nil)
         }
 }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import PinLayout
 
-final class HeaderView: UIView {
+final class MainHeaderView: UIView {
     
     private var rootController: MainViewController!
     private var account: Account?
@@ -68,7 +68,7 @@ final class HeaderView: UIView {
     
     func configure(wuth model: SettingViewModel) {
         account = model.account
-        rootController = model.root as? MainViewController//////////////////////
+        rootController = model.root
     }
     
     private func setup() {
@@ -92,8 +92,11 @@ final class HeaderView: UIView {
 //        guard let v = rootController.next as? MainViewController else {
 //            return
 //        }
-        let vc = SettingViewController()
-        vc.configure(with: .init(account: account, root: rootController))
+        
+//        let vc = SettingViewController()
+//        vc.configure(with: .init(account: account, root: rootController))
+        
+        let vc = LessonViewController()
         
         let transition = CATransition()
         transition.duration = 0.7
@@ -106,7 +109,9 @@ final class HeaderView: UIView {
         //UIViewController(nibName: "SettingViewController", bundle: nil)
                 //as? SettingViewController else { return }
         //self.rootController.navigationController?.pushViewController(vc, animated: true)
+        
         self.rootController.navigationController?.pushViewController(vc, animated: false)
+        
         //self.rootViewController.present(navigationController, animated: true)
     }
 }

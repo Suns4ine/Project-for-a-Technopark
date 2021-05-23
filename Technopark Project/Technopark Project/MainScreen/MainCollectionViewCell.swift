@@ -82,7 +82,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         switch model {
         case .vocabulary(let vocobulary):
             titleLabel.text = vocobulary.name
-            subTitleLabel.text = "\(vocobulary.status)%"
+            subTitleLabel.text = "\(vocobulary.progress)%"
             succses = vocobulary.succses
             vocabulary = true
         case .exercises(let exercises):

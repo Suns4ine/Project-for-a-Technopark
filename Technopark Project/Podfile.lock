@@ -1,16 +1,20 @@
 PODS:
+  - Kingfisher (6.3.0)
   - PinLayout (1.9.4)
 
 DEPENDENCIES:
+  - Kingfisher
   - PinLayout
 
 SPEC REPOS:
   trunk:
+    - Kingfisher
     - PinLayout
 
 SPEC CHECKSUMS:
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   PinLayout: 0d73cf5bea456b8112429c984de377839b9ec34c
 
-PODFILE CHECKSUM: 1c03639a48ad5206e2c5b862e555d8ff6cd619f1
+PODFILE CHECKSUM: cc51c3322a1b4d5ca26d21ed0001756d0efb4de2
 
 COCOAPODS: 1.10.1

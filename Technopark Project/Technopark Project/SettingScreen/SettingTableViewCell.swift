@@ -69,10 +69,8 @@ final class SettingTableViewCell: UITableViewCell {
             .left(15)
             .right(15)
         
-//        button.pin
-//            .all()
-        
-        //closeController()
+        button.pin
+            .all()
     }
     
     
@@ -95,7 +93,7 @@ final class SettingTableViewCell: UITableViewCell {
         transition.subtype = CATransitionSubtype.fromTop
         self.window!.layer.add(transition, forKey: kCATransition)
         
-        //root.dismiss(animated: true, completion: nil)
+        root.dismiss(animated: true, completion: nil)
         //root.navigationController?.popViewController(animated: true)
         //root.navigationController?.dismiss(animated: true, completion: nil)
     }
