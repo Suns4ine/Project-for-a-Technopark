@@ -18,13 +18,17 @@ class MainViewController: UIViewController {
         tableView.backgroundColor = .clear
         return tableView
     }()
-    private var headerView = HeaderView(frame: .zero, account:
-                                            Account(firstName: "Николай",
-                                            lastName: "Шумкин", vocabulary: []))
+    
+    private lazy var headerView = HeaderView(frame: .zero,
+                                             account: Account(firstName: "Николай",
+                                                              lastName: "Шумкин",
+                                                              vocabulary: []),
+                                             root: self)
+    
     private var reminder: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-bell 1")
-        imageView.image = imageView.image?.tinted(with: UIColor(hex: iconColor))
+        imageView.image = imageView.image?.tinted(with: .iconColor)
         return imageView
     }()
     
@@ -34,7 +38,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(hex: backGroundMainColor)
+        self.view.backgroundColor = .backGroundMainColor
+        
+        self.navigationController?.navigationBar.barTintColor = .clear
+        self.hideNavigationBar()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,13 +68,11 @@ class MainViewController: UIViewController {
         
         tableView.pin
             .below(of: headerView, aligned: .center)
-            .bottom()
+            .bottom(view.pin.safeArea.bottom)
     }
 
     private func setup() {
-        [headerView, tableView, reminder].forEach{
-            self.view.addSubview($0)
-        }
+        [headerView, tableView, reminder].forEach{ self.view.addSubview($0) }
     }
 
 }

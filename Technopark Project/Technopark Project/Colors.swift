@@ -8,23 +8,21 @@
 import Foundation
 import UIKit
 
-    let buttonColor = 0x9CB9D1
-    let textColorLight = 0xE0E9F2
-    let iconColor = 0xE0E9F2
-    let viewColor = 0
-    let underlineColor = 0
-    let backGroundMainColor = 0x313844
-    let backGroundOtherColor = 0x7087A4
-    let backGroundSettingColor = 0x597387
-    let errorColor = 0xcc0000
-    let successColor = 0x3A9063
-    let otherColor = 0xf0ff00
-    let shadowColor = 0x06070D //25%
-
-    let standartFont = UIFont(name: "Inter-SemiBold", size: 24)
-
 extension UIColor {
 
+    static let buttonColor = UIColor(hex: 0x9CB9D1)
+    static let textColorLight = UIColor(hex: 0xE0E9F2)
+    static let iconColor = UIColor(hex: 0xE0E9F2)
+    static let viewColor = UIColor(hex: 0x9CB9D1)
+    static let underlineColor = UIColor(hex: 0x9CB9D1)
+    static let backGroundMainColor = UIColor(hex: 0x313844)
+    static let backGroundOtherColor = UIColor(hex: 0x7087A4)
+    static let backGroundSettingColor = UIColor(hex: 0x597387)
+    static let errorColor = UIColor(hex: 0xcc0000)
+    static let successColor = UIColor(hex: 0x3A9063)
+    static let otherColor = UIColor(hex: 0xf0ff00)
+    static let shadowColor = UIColor(hex: 0x06070D) //25%
+    
     convenience init(hex: Int) {
         let components = (
             R: CGFloat((hex >> 16) & 0xff) / 255,
@@ -47,15 +45,4 @@ extension CGColor {
 
     }
 
-}
-
-extension UIImage {
-    func tinted(with color: UIColor, isOpaque: Bool = false) -> UIImage? {
-        let format = imageRendererFormat
-        format.opaque = isOpaque
-        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
-            color.set()
-            withRenderingMode(.alwaysTemplate).draw(at: .zero)
-        }
-    }
 }

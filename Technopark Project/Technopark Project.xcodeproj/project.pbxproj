@@ -28,7 +28,10 @@
 		350FDFC32658691000F63784 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350FDFB12658691000F63784 /* Inter-Bold.ttf */; };
 		350FDFC42658691000F63784 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350FDFB22658691000F63784 /* Inter-Black.ttf */; };
 		350FDFC52658691000F63784 /* Inter-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 350FDFB32658691000F63784 /* Inter-BoldItalic.ttf */; };
-		350FDFC826586B7700F63784 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFC726586B7700F63784 /* BundleExtension.swift */; };
+		350FDFDA265880EE00F63784 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFD9265880EE00F63784 /* SettingViewController.swift */; };
+		350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFE72659758D00F63784 /* AnotherExtension.swift */; };
+		350FDFEC2659824300F63784 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFEB2659824300F63784 /* SettingTableViewCell.swift */; };
+		350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFEE2659829E00F63784 /* SettingViewModel.swift */; };
 		3538901C26567F14000A9CB1 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538901B26567F14000A9CB1 /* Account.swift */; };
 		3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538901E26567F8C000A9CB1 /* Vocabulary.swift */; };
 		353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353890212656DA38000A9CB1 /* MainTableViewCell.swift */; };
@@ -65,7 +68,10 @@
 		350FDFB12658691000F63784 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		350FDFB22658691000F63784 /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.ttf"; sourceTree = "<group>"; };
 		350FDFB32658691000F63784 /* Inter-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.ttf"; sourceTree = "<group>"; };
-		350FDFC726586B7700F63784 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		350FDFD9265880EE00F63784 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		350FDFE72659758D00F63784 /* AnotherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherExtension.swift; sourceTree = "<group>"; };
+		350FDFEB2659824300F63784 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		350FDFEE2659829E00F63784 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		3538901B26567F14000A9CB1 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		3538901E26567F8C000A9CB1 /* Vocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vocabulary.swift; sourceTree = "<group>"; };
 		353890212656DA38000A9CB1 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +127,36 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		350FDFDD2658815E00F63784 /* Other Files */ = {
+			isa = PBXGroup;
+			children = (
+				350FDF69265863C700F63784 /* Fonts */,
+				35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */,
+				35B0AEDF261DCFBE00CBBBE0 /* LaunchScreen.storyboard */,
+				35B0AEDA261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld */,
+			);
+			path = "Other Files";
+			sourceTree = "<group>";
+		};
+		350FDFE22659056600F63784 /* SystemFiles */ = {
+			isa = PBXGroup;
+			children = (
+				35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */,
+				35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */,
+			);
+			path = SystemFiles;
+			sourceTree = "<group>";
+		};
+		350FDFF1265982B100F63784 /* SettingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				350FDFD9265880EE00F63784 /* SettingViewController.swift */,
+				350FDFEE2659829E00F63784 /* SettingViewModel.swift */,
+				350FDFEB2659824300F63784 /* SettingTableViewCell.swift */,
+			);
+			path = SettingScreen;
+			sourceTree = "<group>";
+		};
 		353890282657C55F000A9CB1 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,19 +190,16 @@
 		35B0AED0261DCFBB00CBBBE0 /* Technopark Project */ = {
 			isa = PBXGroup;
 			children = (
-				35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */,
-				350FDFC726586B7700F63784 /* BundleExtension.swift */,
-				350FDF69265863C700F63784 /* Fonts */,
+				350FDFF1265982B100F63784 /* SettingScreen */,
+				350FDFE22659056600F63784 /* SystemFiles */,
+				350FDFDD2658815E00F63784 /* Other Files */,
 				353890282657C55F000A9CB1 /* MainScreen */,
-				35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */,
 				3538901B26567F14000A9CB1 /* Account.swift */,
+				350FDFE72659758D00F63784 /* AnotherExtension.swift */,
 				3538901E26567F8C000A9CB1 /* Vocabulary.swift */,
-				35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */,
 				3538E7C2264E35B400D8CB58 /* Colors.swift */,
-				35B0AEDF261DCFBE00CBBBE0 /* LaunchScreen.storyboard */,
-				35B0AEE2261DCFBE00CBBBE0 /* Info.plist */,
-				35B0AEDA261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld */,
 				350FDF5E2657D34300F63784 /* Exercises.swift */,
+				35B0AEE2261DCFBE00CBBBE0 /* Info.plist */,
 			);
 			path = "Technopark Project";
 			sourceTree = "<group>";
@@ -321,15 +354,18 @@
 			files = (
 				35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */,
 				3538E7C3264E35B400D8CB58 /* Colors.swift in Sources */,
-				350FDFC826586B7700F63784 /* BundleExtension.swift in Sources */,
 				353890252657A6B3000A9CB1 /* MainCollectionViewCell.swift in Sources */,
 				353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */,
 				3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */,
+				350FDFDA265880EE00F63784 /* SettingViewController.swift in Sources */,
+				350FDFEC2659824300F63784 /* SettingTableViewCell.swift in Sources */,
 				35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */,
 				35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */,
 				350FDF662657E65C00F63784 /* HeaderView.swift in Sources */,
 				350FDF622657D44500F63784 /* EducationalMaterial.swift in Sources */,
+				350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */,
 				350FDF5F2657D34300F63784 /* Exercises.swift in Sources */,
+				350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
 				3538901C26567F14000A9CB1 /* Account.swift in Sources */,
 			);

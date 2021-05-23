@@ -12,19 +12,20 @@ import PinLayout
 final class MainTableViewCell: UITableViewCell {
     
     private var educationalMaterial = [EducationalMaterial]()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = standartFont
-        label.textColor = UIColor(hex: textColorLight)
+        label.font = .standartFont
+        label.textColor = .textColorLight
         return label
     }()
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(hex: textColorLight)
+        label.textColor = .textColorLight
         label.numberOfLines = 3
         label.textAlignment = .center
-        label.font = standartFont
+        label.font = .standartFont
         return label
     }()
     
@@ -47,13 +48,6 @@ final class MainTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.selectionStyle = .none
-        self.backgroundColor = .clear
-        
-        mainCollectionView.delegate = self
-        mainCollectionView.dataSource = self
-        mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
-        
         setup()
     }
     
@@ -64,7 +58,7 @@ final class MainTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleIcon.image = titleIcon.image?.tinted(with: UIColor(hex: iconColor)) // почему-то раньше оно не перекрашиваетя
+        titleIcon.image = titleIcon.image?.tinted(with: .iconColor) // почему-то раньше оно не перекрашиваетя
         
         titleLabel.pin
             .sizeToFit()
@@ -97,13 +91,19 @@ final class MainTableViewCell: UITableViewCell {
         titleLabel.text = model.title
         titleIcon.image = model.image
         educationalMaterial = model.material
-        subTitleLabel.text = "У вас еще нет словарей. Создайте свой или возьмите готовый."
     }
     
     private func setup() {
-        [titleLabel, titleIcon, mainCollectionView, subTitleLabel].forEach {
-            contentView.addSubview($0)
-        }
+        [titleLabel, titleIcon, mainCollectionView, subTitleLabel].forEach { contentView.addSubview($0) }
+        
+        selectionStyle = .none
+        backgroundColor = .clear
+        
+        mainCollectionView.delegate = self
+        mainCollectionView.dataSource = self
+        mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "MainCollectionViewCell")
+        
+        subTitleLabel.text = "У вас еще нет словарей. Создайте свой или возьмите готовый."
     }
 }
 

@@ -11,39 +11,30 @@ import PinLayout
 
 final class HeaderView: UIView {
     
+    private var rootController: MainViewController!
     private var account: Account?
     private let buttonSetting = UIButton()
     
     private lazy var labelNamed: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(hex: textColorLight)
+        label.textColor = .textColorLight
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.font = standartFont
-        label.text = account != nil ?
-            "\(String(describing: account!.firstName)) \(String(describing: account!.lastName))" :
-            "\(Bundle.appName())"
-        
+        label.font = .standartFont
         return label
     }()
     
     private let iconAccount: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-user 1")
-        imageView.image = imageView.image?.tinted(with: UIColor(hex: iconColor))
+        imageView.image = imageView.image?.tinted(with: .iconColor)
         return imageView
     }()
     
-    
-    init(frame: CGRect, account: Account?) {
-        self.account = account
+    init(frame: CGRect, account: Account?, root: MainViewController) {
         super.init(frame: frame)
-        
-        backgroundColor = UIColor(hex: backGroundOtherColor)
-        layer.shadowColor = UIColor(hex: shadowColor).cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.shadowOpacity = 0.25
-        layer.shadowRadius = 4
+        self.account = account
+        self.rootController = root
         
         setup()
     }
@@ -75,12 +66,47 @@ final class HeaderView: UIView {
         }
     }
     
+    func configure(wuth model: SettingViewModel) {
+        account = model.account
+        rootController = model.root as? MainViewController//////////////////////
+    }
+    
     private func setup() {
-        
         self.addSubview(buttonSetting)
+        [iconAccount, labelNamed].forEach { buttonSetting.addSubview($0) }
         
-        [iconAccount, labelNamed].forEach {
-            buttonSetting.addSubview($0)
-        }
+        backgroundColor = .backGroundOtherColor
+        layer.shadowColor = UIColor.shadowColor.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOpacity = 0.25
+        layer.shadowRadius = 4
+        
+        buttonSetting.addTarget(self, action: #selector(newSettingController), for: .touchUpInside)
+        labelNamed.text = account != nil ?
+            "\(String(describing: account!.firstName)) \(String(describing: account!.lastName))" :
+            "\(Bundle.appName())"
+    }
+    
+    @objc
+    private func newSettingController() {
+//        guard let v = rootController.next as? MainViewController else {
+//            return
+//        }
+        let vc = SettingViewController()
+        vc.configure(with: .init(account: account, root: rootController))
+        
+        let transition = CATransition()
+        transition.duration = 0.7
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromBottom
+        self.window!.layer.add(transition, forKey: kCATransition)
+        //self.rootController.present(vc, animated: false, completion: nil)
+        //vc.dismiss(animated: true, completion: nil)
+        //let navigationController = UINavigationController(rootViewController: vc)
+        //UIViewController(nibName: "SettingViewController", bundle: nil)
+                //as? SettingViewController else { return }
+        //self.rootController.navigationController?.pushViewController(vc, animated: true)
+        self.rootController.navigationController?.pushViewController(vc, animated: false)
+        //self.rootViewController.present(navigationController, animated: true)
     }
 }
