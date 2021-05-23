@@ -9,6 +9,12 @@ import Foundation
 
 struct Vocabulary {
     var name: String
-    var status: Int
+    var progress: Int
     var succses: Bool
+    var words: [Word]
+    var learnedWords: [Word]
+    var misspelledWords: [Word]
+    let dateCreate: Date
+    var dateOfChange: Date
+    var numberOfAttempts: Int
 }

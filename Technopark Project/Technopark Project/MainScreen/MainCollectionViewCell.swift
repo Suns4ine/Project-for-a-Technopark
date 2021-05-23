@@ -16,38 +16,31 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = standartFont
+        label.font = .standartFont
         label.numberOfLines = 3
-        label.textColor = UIColor(hex: textColorLight)
+        label.textColor = .textColorLight
         return label
     }()
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = standartFont
+        label.font = .standartFont
         label.numberOfLines = 1
-        label.textColor = UIColor(hex: textColorLight)
+        label.textColor = .textColorLight
         return label
     }()
     
     private let iconSuccses: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-check")
-        imageView.image = imageView.image?.tinted(with: UIColor(hex: iconColor))
+        imageView.image = imageView.image?.tinted(with: .iconColor)
         return imageView
     }()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.layer.cornerRadius = 8
-        backgroundColor = UIColor(hex: buttonColor)
-        layer.shadowColor = UIColor(hex: shadowColor).cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.shadowOpacity = 0.25
-        layer.shadowRadius = 4
-        
+    
         setup()
     }
     
@@ -59,9 +52,9 @@ final class MainCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         if succses == true {
-            titleLabel.textColor = UIColor(hex: successColor)
-            subTitleLabel.textColor = UIColor(hex: successColor)
-            iconSuccses.image = iconSuccses.image?.tinted(with: UIColor(hex: successColor))//successColor))
+            titleLabel.textColor = .successColor
+            subTitleLabel.textColor = .successColor
+            iconSuccses.image = iconSuccses.image?.tinted(with: .successColor)
         }
         
         titleLabel.pin
@@ -89,7 +82,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
         switch model {
         case .vocabulary(let vocobulary):
             titleLabel.text = vocobulary.name
-            subTitleLabel.text = "\(vocobulary.status)%"
+            subTitleLabel.text = "\(vocobulary.progress)%"
             succses = vocobulary.succses
             vocabulary = true
         case .exercises(let exercises):
@@ -98,8 +91,13 @@ final class MainCollectionViewCell: UICollectionViewCell {
     }
     
     private func setup() {
-        [titleLabel, subTitleLabel, iconSuccses].forEach {
-            addSubview($0)
-        }
+        [titleLabel, subTitleLabel, iconSuccses].forEach { addSubview($0) }
+        
+        layer.cornerRadius = 8
+        backgroundColor = .buttonColor
+        layer.shadowColor = UIColor.shadowColor.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOpacity = 0.25
+        layer.shadowRadius = 4
     }
 }

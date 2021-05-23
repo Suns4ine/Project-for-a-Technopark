@@ -10,7 +10,7 @@ import PinLayout
 
 class MainViewController: UIViewController {
     
-    private var vocabularies: [Vocabulary] = [.init(name: "Растения", status: 100, succses: true) , .init(name: "Глаголы", status: 56, succses: false), .init(name: "Учеба", status: 12, succses: false), .init(name: "Школа", status: 99, succses: false)]
+//    private var vocabularies: [Vocabulary] = [.init(name: "Растения", progress: 100, succses: true) , .init(name: "Глаголы", progress: 56, succses: false), .init(name: "Учеба", progress: 12, succses: false), .init(name: "Школа", progress: 99, succses: false)]
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -18,23 +18,30 @@ class MainViewController: UIViewController {
         tableView.backgroundColor = .clear
         return tableView
     }()
-    private var headerView = HeaderView(frame: .zero, account:
-                                            Account(firstName: "Николай",
-                                            lastName: "Шумкин", vocabulary: []))
-    private var reminder: UIImageView = {
+    
+    private lazy var headerView = MainHeaderView(frame: .zero,
+                                             account: Account(firstName: "Николай",
+                                                              lastName: "Шумкин",
+                                                              vocabulary: []),
+                                             root: self)
+    
+    private var reminderIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-bell 1")
-        imageView.image = imageView.image?.tinted(with: UIColor(hex: iconColor))
+        imageView.image = imageView.image?.tinted(with: .iconColor)
         return imageView
     }()
     
-    private lazy var vocabularyCells: [EducationalMaterialModel] = [
-        .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", material: [].newArrayEducation(ar: vocabularies)),
+    private lazy var EducationalMaterialCells: [EducationalMaterialModel] = [
+        .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", material: []),//[].newArrayEducation(ar: vocabularies)),
         .init(image: UIImage(named: "fitness 1"), title: "Упражнения", material: [.exercises(.init(name: "Уить слова")), .exercises(.init(name: "Хардкор")), .exercises(.init(name: "10 слов дня")), .exercises(.init(name: "Салянка"))])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(hex: backGroundMainColor)
+        self.view.backgroundColor = .backGroundMainColor
+        
+        self.navigationController?.navigationBar.barTintColor = .clear
+        self.hideNavigationBar()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,7 +60,7 @@ class MainViewController: UIViewController {
             .left()
             .right()
         
-        reminder.pin
+        reminderIcon.pin
             .below(of: headerView)
             .marginVertical(15)
             .size(24)
@@ -61,13 +68,11 @@ class MainViewController: UIViewController {
         
         tableView.pin
             .below(of: headerView, aligned: .center)
-            .bottom()
+            .bottom(view.pin.safeArea.bottom)
     }
 
     private func setup() {
-        [headerView, tableView, reminder].forEach{
-            self.view.addSubview($0)
-        }
+        [headerView, tableView, reminderIcon].forEach{ self.view.addSubview($0) }
     }
 
 }
@@ -75,7 +80,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     //Колличество ячейек
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vocabularyCells.count
+        return EducationalMaterialCells.count
     }
     //Вид ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,7 +88,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: "MainTableViewCell",
                 for: indexPath) as? MainTableViewCell else { return .init() }
         
-        cell.configure(with: vocabularyCells[indexPath.row])
+        cell.configure(with: EducationalMaterialCells[indexPath.row])
         return cell
     }
     //Высота ячейки
