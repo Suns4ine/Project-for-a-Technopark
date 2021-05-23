@@ -13,7 +13,7 @@ final class LessonHeaderView: UIView {
     
     private let progressView: UIView = {
         let view = UIView()
-        view.backgroundColor = .viewColor
+        view.backgroundColor = .iconColor
         view.layer.cornerRadius = 3
         return view
     }()

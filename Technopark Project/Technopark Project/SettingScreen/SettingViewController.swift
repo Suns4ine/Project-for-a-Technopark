@@ -43,7 +43,6 @@ class SettingViewController: UIViewController {
         setup()
     }
     
-    
     func configure(with model: SettingViewModel) {
         self.account = model.account
     }

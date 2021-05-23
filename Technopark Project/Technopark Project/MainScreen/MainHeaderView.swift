@@ -82,6 +82,7 @@ final class MainHeaderView: UIView {
         layer.shadowRadius = 4
         
         buttonSetting.addTarget(self, action: #selector(newSettingController), for: .touchUpInside)
+        
         labelNamed.text = account != nil ?
             "\(String(describing: account!.firstName)) \(String(describing: account!.lastName))" :
             "\(Bundle.appName())"
@@ -93,24 +94,24 @@ final class MainHeaderView: UIView {
 //            return
 //        }
         
-//        let vc = SettingViewController()
-//        vc.configure(with: .init(account: account, root: rootController))
+        let vc = SettingViewController()
+        vc.configure(with: .init(account: account, root: rootController))
         
-        let vc = LessonViewController()
+        //let vc = LessonViewController()
         
         let transition = CATransition()
         transition.duration = 0.7
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromBottom
         self.window!.layer.add(transition, forKey: kCATransition)
-        //self.rootController.present(vc, animated: false, completion: nil)
+        self.rootController.present(vc, animated: false, completion: nil)
         //vc.dismiss(animated: true, completion: nil)
         //let navigationController = UINavigationController(rootViewController: vc)
         //UIViewController(nibName: "SettingViewController", bundle: nil)
                 //as? SettingViewController else { return }
         //self.rootController.navigationController?.pushViewController(vc, animated: true)
         
-        self.rootController.navigationController?.pushViewController(vc, animated: false)
+       // self.rootController.navigationController?.pushViewController(vc, animated: false)
         
         //self.rootViewController.present(navigationController, animated: true)
     }

@@ -12,6 +12,7 @@ import PinLayout
 class LessonViewController: UIViewController {
     
     private let headerView = LessonHeaderView()
+    private var vocabulary: Vocabulary!
     
     private let counterLabel: UILabel = {
         let label = UILabel()
@@ -29,7 +30,7 @@ class LessonViewController: UIViewController {
         return label
     }()
     
-    private let collectionView: UICollectionView = {
+    private let lessonCollectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.scrollDirection = .horizontal
         
@@ -50,8 +51,12 @@ class LessonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .backGroundMainColor
+        view.backgroundColor = .backGroundLessonColor
         //headerView.backgroundColor = .green
+        
+        lessonCollectionView.delegate = self
+        lessonCollectionView.dataSource = self
+        lessonCollectionView.register(LessonCollectionViewCell.self, forCellWithReuseIdentifier: "LessonCollectionViewCell")
         setup()
     }
     
@@ -63,28 +68,56 @@ class LessonViewController: UIViewController {
             .horizontally()
             .height(70)
         
-        collectionView.pin
+        lessonCollectionView.pin
             .left()
             .right()
-            .height(170)
+            .height(self.view.frame.height * 0.2)
             .below(of: headerView)
             .marginVertical(5)
         
         counterLabel.pin
             .sizeToFit()
-            .below(of: collectionView)
+            .below(of: lessonCollectionView)
             .marginVertical(9)
             .right(17)
         
         translationLabel.pin
             .sizeToFit()
-            .below(of: collectionView)
+            .below(of: lessonCollectionView)
             .marginVertical(42)
             .left(32)
     }
     
     private func setup() {
-        [collectionView, questionIcon, headerView, counterLabel, translationLabel].forEach { self.view.addSubview($0) }
+        [lessonCollectionView, questionIcon, headerView, counterLabel, translationLabel].forEach { self.view.addSubview($0) }
+    }
+    
+    func configure(with model: LessonViewModel) {
+        self.vocabulary = model.vocabulary
     }
 }
 
+
+extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 18//return vocabulary.words.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LessonCollectionViewCell",
+                                                            for: indexPath) as? LessonCollectionViewCell else { return .init() }
+        
+        //cell.configure(with: educationalMaterial[indexPath.row])
+        return cell
+    }
+    
+    //Размеры ячейки
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width * 0.85, height: collectionView.frame.width - 10)
+    }
+    
+    //Расстояние между ячейками
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(8)
+    }
+}
