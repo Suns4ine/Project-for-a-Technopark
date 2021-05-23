@@ -52,11 +52,11 @@ class LessonViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .backGroundLessonColor
-        //headerView.backgroundColor = .green
         
         lessonCollectionView.delegate = self
         lessonCollectionView.dataSource = self
         lessonCollectionView.register(LessonCollectionViewCell.self, forCellWithReuseIdentifier: "LessonCollectionViewCell")
+        
         setup()
     }
     
@@ -113,7 +113,7 @@ extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     //Размеры ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width * 0.85, height: collectionView.frame.width - 10)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)//collectionView.frame.height - 10) view.frame.width * 0.85
     }
     
     //Расстояние между ячейками

@@ -49,9 +49,9 @@ final class LessonCollectionViewCell: UICollectionViewCell {
         
         backgroundColor = .viewColor
         layer.cornerRadius = 8
-//        layer.shadowColor = UIColor.shadowColor.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 4)
-//        layer.shadowOpacity = 0.25
-//        layer.shadowRadius = 4
+        layer.shadowColor = UIColor.shadowColor.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOpacity = 0.25
+        layer.shadowRadius = 4
     }
 }

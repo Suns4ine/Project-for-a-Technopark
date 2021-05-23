@@ -37,7 +37,7 @@
 		353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353890212656DA38000A9CB1 /* MainTableViewCell.swift */; };
 		353890252657A6B3000A9CB1 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353890242657A6B3000A9CB1 /* MainCollectionViewCell.swift */; };
 		3538E7C3264E35B400D8CB58 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538E7C2264E35B400D8CB58 /* UIColorExtension.swift */; };
-		3540644A2659E45E00806581 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354064492659E45E00806581 /* LessonViewController.swift */; };
+		35392DD1265A961300208CDB /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35392DD0265A961300208CDB /* LessonViewController.swift */; };
 		35406453265A0BAD00806581 /* LessonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406452265A0BAD00806581 /* LessonHeaderView.swift */; };
 		35406456265A711400806581 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406455265A711400806581 /* LessonViewModel.swift */; };
 		35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */; };
@@ -82,7 +82,7 @@
 		353890212656DA38000A9CB1 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		353890242657A6B3000A9CB1 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		3538E7C2264E35B400D8CB58 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		354064492659E45E00806581 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
+		35392DD0265A961300208CDB /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		35406452265A0BAD00806581 /* LessonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonHeaderView.swift; sourceTree = "<group>"; };
 		35406455265A711400806581 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		35B0AECE261DCFBB00CBBBE0 /* Technopark Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Technopark Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,7 +191,7 @@
 		354064472659E19C00806581 /* LessonScreen */ = {
 			isa = PBXGroup;
 			children = (
-				354064492659E45E00806581 /* LessonViewController.swift */,
+				35392DD0265A961300208CDB /* LessonViewController.swift */,
 				35406452265A0BAD00806581 /* LessonHeaderView.swift */,
 				35CE68A9265A77B4007C37EB /* LessonCollectionViewCell.swift */,
 				35406455265A711400806581 /* LessonViewModel.swift */,
@@ -390,6 +390,7 @@
 				353890252657A6B3000A9CB1 /* MainCollectionViewCell.swift in Sources */,
 				353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */,
 				3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */,
+				35392DD1265A961300208CDB /* LessonViewController.swift in Sources */,
 				350FDFDA265880EE00F63784 /* SettingViewController.swift in Sources */,
 				35CE68AE265A781E007C37EB /* Word.swift in Sources */,
 				350FDFEC2659824300F63784 /* SettingTableViewCell.swift in Sources */,
@@ -402,7 +403,6 @@
 				350FDF5F2657D34300F63784 /* Exercises.swift in Sources */,
 				350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
-				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,
 				3538901C26567F14000A9CB1 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
