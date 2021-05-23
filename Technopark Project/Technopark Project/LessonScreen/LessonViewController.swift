@@ -98,7 +98,7 @@ class LessonViewController: UIViewController {
 }
 
 
-extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 18//return vocabulary.words.count
     }

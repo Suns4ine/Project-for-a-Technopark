@@ -75,8 +75,7 @@ final class SettingTableViewCell: UITableViewCell {
     
     
     private func setup() {
-        [backgroundTableViewCell].forEach { addSubview($0) }
-        [titleLabel, button].forEach {  backgroundTableViewCell.addSubview($0)}
+        [backgroundTableViewCell, titleLabel, button].forEach { self.contentView.addSubview($0) }
         
         button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         
@@ -88,13 +87,11 @@ final class SettingTableViewCell: UITableViewCell {
     private func closeController() {
         
         let transition = CATransition()
-        transition.duration = 2.7
+        transition.duration = 0.7
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromTop
         self.window!.layer.add(transition, forKey: kCATransition)
         
-        //root.dismiss(animated: true, completion: nil)
-        root.navigationController?.popViewController(animated: true)
-        //root.navigationController?.dismiss(animated: true, completion: nil)
+        root.navigationController?.popViewController(animated: false)
     }
 }
