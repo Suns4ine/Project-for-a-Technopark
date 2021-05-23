@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28FEC4E8265ABF2700CED56C /* MyVocabulariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */; };
+		28FEC4EC265AC32700CED56C /* MyVocabulariesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */; };
 		350FDF5F2657D34300F63784 /* Exercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDF5E2657D34300F63784 /* Exercises.swift */; };
 		350FDF622657D44500F63784 /* EducationalMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDF612657D44500F63784 /* EducationalMaterial.swift */; };
 		350FDF662657E65C00F63784 /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDF652657E65C00F63784 /* MainHeaderView.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesViewController.swift; sourceTree = "<group>"; };
+		28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesHeadView.swift; sourceTree = "<group>"; };
 		350FDF5E2657D34300F63784 /* Exercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercises.swift; sourceTree = "<group>"; };
 		350FDF612657D44500F63784 /* EducationalMaterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationalMaterial.swift; sourceTree = "<group>"; };
 		350FDF652657E65C00F63784 /* MainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28FEC4E6265ABEB800CED56C /* MyVocabularies */ = {
+			isa = PBXGroup;
+			children = (
+				28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */,
+				28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */,
+			);
+			path = MyVocabularies;
+			sourceTree = "<group>";
+		};
 		350FDF69265863C700F63784 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +233,7 @@
 		35B0AED0261DCFBB00CBBBE0 /* Technopark Project */ = {
 			isa = PBXGroup;
 			children = (
+				28FEC4E6265ABEB800CED56C /* MyVocabularies */,
 				354064472659E19C00806581 /* LessonScreen */,
 				354064402659E0C500806581 /* Another Files */,
 				350FDFF1265982B100F63784 /* SettingScreen */,
@@ -383,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28FEC4E8265ABF2700CED56C /* MyVocabulariesViewController.swift in Sources */,
 				35406453265A0BAD00806581 /* LessonHeaderView.swift in Sources */,
 				35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */,
 				3538E7C3264E35B400D8CB58 /* UIColorExtension.swift in Sources */,
@@ -404,6 +419,7 @@
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
 				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,
 				3538901C26567F14000A9CB1 /* Account.swift in Sources */,
+				28FEC4EC265AC32700CED56C /* MyVocabulariesHeadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
