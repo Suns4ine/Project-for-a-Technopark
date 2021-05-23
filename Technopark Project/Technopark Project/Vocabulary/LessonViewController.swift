@@ -13,6 +13,22 @@ class LessonViewController: UIViewController {
     
     private let headerView = LessonHeaderView()
     
+    private let counterLabel: UILabel = {
+        let label = UILabel()
+        label.font = .standartFont
+        label.textColor = .textColorLight
+        label.text = "100/100"
+        return label
+    }()
+    
+    private let translationLabel: UILabel = {
+        let label = UILabel()
+        label.font = .standartFont
+        label.textColor = .textColorLight
+        label.text = "Лев"
+        return label
+    }()
+    
     private let collectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
         collectionLayout.scrollDirection = .horizontal
@@ -42,21 +58,33 @@ class LessonViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        collectionView.pin
-            .left()
-            .right()
-            .height(336)
-            .top(119) //изменить в дальнейшем
-        
         headerView.pin
             .top(view.pin.safeArea.top)
             .horizontally()
             .height(70)
         
+        collectionView.pin
+            .left()
+            .right()
+            .height(170)
+            .below(of: headerView)
+            .marginVertical(5)
+        
+        counterLabel.pin
+            .sizeToFit()
+            .below(of: collectionView)
+            .marginVertical(9)
+            .right(17)
+        
+        translationLabel.pin
+            .sizeToFit()
+            .below(of: collectionView)
+            .marginVertical(42)
+            .left(32)
     }
     
     private func setup() {
-        [collectionView, questionIcon, headerView].forEach { self.view.addSubview($0) }
+        [collectionView, questionIcon, headerView, counterLabel, translationLabel].forEach { self.view.addSubview($0) }
     }
 }
 
