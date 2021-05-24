@@ -27,7 +27,6 @@ final class MyVocabulariesHeadView: UIView {
     
     private let titleLabel: UILabel = {
        let label = UILabel()
-        label.text = "Мои словари"
         label.font = .standartFont
         label.textColor = .textColorLight
         label.textAlignment = .center
@@ -35,20 +34,15 @@ final class MyVocabulariesHeadView: UIView {
         return label
     }()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, root: UIViewController, model: MyVocabulariesModel) {
         super.init(frame: frame)
         
+        titleLabel.text = model.name
         setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setup () {
-        [backIcon, settingIcon, titleLabel].forEach{
-            addSubview($0)
-        }
     }
     
     override func layoutSubviews() {
@@ -73,4 +67,9 @@ final class MyVocabulariesHeadView: UIView {
         
     }
     
+    private func setup () {
+        [backIcon, settingIcon, titleLabel].forEach{
+            addSubview($0)
+        }
+    }
 }
