@@ -10,6 +10,7 @@ import UIKit
 
 extension UIFont {
     static let standartFont = UIFont(name: "Inter-SemiBold", size: 24)
+    static let smallButtonFont = UIFont(name: "Inter-SemiBold", size: 16)
 }
 
 extension Bundle {

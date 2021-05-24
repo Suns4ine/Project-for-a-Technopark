@@ -18,7 +18,7 @@ final class SettingTableViewCell: UITableViewCell {
         return button
     }()
     
-    private let backgroundTableViewCell: UIView = {
+    private let backgroundTableView: UIView = {
         let view = UIView()
         view.backgroundColor = .buttonColor
         view.layer.cornerRadius = 8
@@ -57,7 +57,7 @@ final class SettingTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundTableViewCell.pin
+        backgroundTableView.pin
             .top(5)
             .bottom(5)
             .left()
@@ -75,7 +75,7 @@ final class SettingTableViewCell: UITableViewCell {
     
     
     private func setup() {
-        [backgroundTableViewCell, titleLabel, button].forEach { self.contentView.addSubview($0) }
+        [backgroundTableView, titleLabel, button].forEach { self.contentView.addSubview($0) }
         
         button.addTarget(self, action: #selector(closeController), for: .touchUpInside)
         
