@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */; };
 		28FEC4E8265ABF2700CED56C /* MyVocabulariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */; };
 		28FEC4EC265AC32700CED56C /* MyVocabulariesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */; };
 		28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4EE265AD11500CED56C /* MyVocabulariesModel.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVocabularyNameViewController.swift; sourceTree = "<group>"; };
 		28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesViewController.swift; sourceTree = "<group>"; };
 		28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesHeadView.swift; sourceTree = "<group>"; };
 		28FEC4EE265AD11500CED56C /* MyVocabulariesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesModel.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */,
 				28FEC4EE265AD11500CED56C /* MyVocabulariesModel.swift */,
 				28FEC4F2265ADFD200CED56C /* MyVocabulariesCollectionViewCell.swift */,
+				282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */,
 			);
 			path = MyVocabulariesScreen;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */,
 				350FDF5F2657D34300F63784 /* Exercises.swift in Sources */,
 				350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */,
+				282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */,
 				28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
 				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,

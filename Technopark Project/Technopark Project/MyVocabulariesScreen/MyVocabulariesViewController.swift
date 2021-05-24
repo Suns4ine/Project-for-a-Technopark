@@ -11,6 +11,8 @@ import UIKit
 
 class MyVocabulariesViewController: UIViewController {
     
+    private let addButton = UIButton()
+    
     private var vocabularies: [Vocabulary] = [.init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
                                               .init(name: "Море", progress: 100, succses: true, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
                                               .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
@@ -22,7 +24,7 @@ class MyVocabulariesViewController: UIViewController {
     private lazy var myVocabulariesHeadView = MyVocabulariesHeadView(frame: .zero, root: self, model: .init(name: "Мои словари"))
     
     private let addIcon: UIImageView = {
-       let icon = UIImageView()
+        let icon = UIImageView()
         icon.image = UIImage(named: "fi-rr-plus")
         icon.image = icon.image?.tinted(with: .iconColor)
         return icon
@@ -69,11 +71,15 @@ class MyVocabulariesViewController: UIViewController {
             .left()
             .right()
         
-        addIcon.pin
+        addButton.pin
             .size(24)
             .right(35)
             .below(of: myVocabulariesHeadView)
             .marginVertical(44)
+        
+        addIcon.pin
+            .size(24)
+            .center()
         
         searchVocabularyBar.pin
             .left(21)
@@ -91,9 +97,26 @@ class MyVocabulariesViewController: UIViewController {
     }
     
     private func setup(){
-        [myVocabulariesHeadView, addIcon, searchVocabularyBar, myVocabulariesCollectionView].forEach{
+        [myVocabulariesHeadView, addButton, searchVocabularyBar, myVocabulariesCollectionView].forEach{
             view.addSubview($0)
         }
+        addButton.addSubview(addIcon)
+        
+        addButton.addTarget(self, action: #selector(newSettingController), for: .touchUpInside)
+    }
+     
+    @objc
+    private func newSettingController() {
+        let newViewController = GetVocabularyNameViewController()
+//        vc.configure(with: .init(account: account, root: rootController))
+//
+//        let transition = CATransition()
+//        transition.duration = 0.7
+//        transition.type = CATransitionType.push
+//        transition.subtype = CATransitionSubtype.fromRight
+//        self.window!.layer.add(transition, forKey: kCATransition)
+//
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 
