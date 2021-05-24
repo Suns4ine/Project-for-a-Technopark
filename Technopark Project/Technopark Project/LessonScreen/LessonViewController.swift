@@ -11,7 +11,7 @@ import PinLayout
 
 class LessonViewController: UIViewController {
     
-    private let headerView = LessonHeaderView()
+    private lazy var headerView = LessonHeaderView(frame: .zero, rootController: self)
     private var vocabulary: Vocabulary!
     
     private let counterLabel: UILabel = {
@@ -71,7 +71,7 @@ class LessonViewController: UIViewController {
         lessonCollectionView.pin
             .left()
             .right()
-            .height(self.view.frame.height * 0.2)
+            .height(170)//(self.view.frame.height * 0.2)
             .below(of: headerView)
             .marginVertical(5)
         
@@ -98,9 +98,9 @@ class LessonViewController: UIViewController {
 }
 
 
-extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 18//return vocabulary.words.count
+        return 10//return vocabulary.words.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,11 +113,11 @@ extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     //Размеры ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)//collectionView.frame.height - 10) view.frame.width * 0.85
+        return CGSize(width: collectionView.frame.width - 40, height: collectionView.frame.height - 10)//CGSize(width: 300, height: 160)
     }
     
-    //Расстояние между ячейками
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return CGFloat(8)
-    }
+//    //Расстояние между ячейками
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return CGFloat(8)
+//    }
 }

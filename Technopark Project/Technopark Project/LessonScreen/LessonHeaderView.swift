@@ -1,5 +1,5 @@
 //
-//  LessonHeaderView.swift
+//  HeaderLessonView.swift
 //  Technopark Project
 //
 //  Created by Vyacheslav Pronin on 23.05.2021.
@@ -11,6 +11,7 @@ import PinLayout
 
 final class LessonHeaderView: UIView {
     
+    private var rootController: UIViewController!
     private let progressView: UIView = {
         let view = UIView()
         view.backgroundColor = .iconColor
@@ -24,6 +25,14 @@ final class LessonHeaderView: UIView {
         imageView.image = imageView.image?.tinted(with: .iconColor)
         return imageView
     }()
+    
+    private let backButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(backToController), for: .touchUpInside)
+        return button
+    }()
+    
     private let settingIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "fi-rr-settings")
@@ -31,9 +40,16 @@ final class LessonHeaderView: UIView {
         return imageView
     }()
     
-    override init(frame: CGRect) {
+    private let settingButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        return button
+    }()
+    
+    init(frame: CGRect, rootController: UIViewController) {
         super.init(frame: frame)
         
+        self.rootController = rootController
         setup()
     }
     
@@ -44,16 +60,20 @@ final class LessonHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backIcon.pin
-            .size(24)
-            .left(21)
-            .top(13)
+        [backIcon, backButton].forEach {
+            $0.pin
+                .size(24)
+                .left(21)
+                .top(13)
+        }
 
-        settingIcon.pin
+        [settingIcon, settingButton].forEach {
+            $0.pin
             .size(24)
             .right(18)
             .top(13)
-        
+        }
+            
         progressView.pin
             .top(22)
             .after(of: backIcon)
@@ -65,12 +85,17 @@ final class LessonHeaderView: UIView {
     }
     
     private func setup() {
-        [backIcon, progressView, settingIcon].forEach { self.addSubview($0) }
+        [backIcon, progressView, settingIcon, backButton, settingButton].forEach { self.addSubview($0) }
+
     }
     
     func configure(with model: String) {
         
     }
     
+    @objc
+    private func backToController() {
+        rootController.navigationController?.popViewController(animated: true)
+    }
     
 }
