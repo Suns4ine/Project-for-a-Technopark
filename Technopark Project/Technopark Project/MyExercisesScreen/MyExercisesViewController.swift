@@ -69,7 +69,13 @@ class MyExercisesViewController: UIViewController {
     }
 }
 
-extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CellDelegate {
+    
+    func openNewController() {
+        let newViewController = ChooseVocabularyViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,6 +89,7 @@ extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewD
                                                             for: indexPath) as? MyExercisesCollectionViewCell else { return .init() }
         
         cell.configure(with: exercises[indexPath.row])
+        cell.delegate = self
         return cell
     }
     

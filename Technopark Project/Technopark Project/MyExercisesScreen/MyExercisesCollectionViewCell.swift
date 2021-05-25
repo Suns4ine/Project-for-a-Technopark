@@ -11,6 +11,8 @@ import PinLayout
 
 final class MyExercisesCollectionViewCell: UICollectionViewCell {
     
+    weak var delegate: CellDelegate?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .standartFont
@@ -34,8 +36,7 @@ final class MyExercisesCollectionViewCell: UICollectionViewCell {
         
         titleLabel.pin
             .sizeToFit()
-            .top(45)
-            .hCenter()
+            .center()
     }
     
     func configure(with model: Exercises) {
@@ -44,6 +45,8 @@ final class MyExercisesCollectionViewCell: UICollectionViewCell {
     
     private func setup() {
         [titleLabel].forEach { addSubview($0) }
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openNewController))
+        self.addGestureRecognizer(gestureRecognizer)
         
         layer.cornerRadius = 8
         backgroundColor = .buttonColor
@@ -52,5 +55,14 @@ final class MyExercisesCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
     }
+    
+    @objc
+    private func openNewController() {
+        delegate?.openNewController()
+    }
+}
+
+protocol  CellDelegate: AnyObject {
+    func openNewController()
 }
 
