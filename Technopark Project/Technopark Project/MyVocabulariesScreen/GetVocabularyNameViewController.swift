@@ -11,7 +11,7 @@ import UIKit
 
 class GetVocabularyNameViewController: UIViewController {
     
-    private lazy var myVocabulariesHeadView = MyVocabulariesHeadView(frame: .zero, root: self, model: .init(name: "Новый словарь"))
+    private lazy var myVocabulariesHeadView = MyVocabulariesHeadView(frame: .zero, root: self, model: .init(name: "Введите название"))
     private let continueButton = UIButton()
     
     private let arrowIcon: UIImageView = {
@@ -23,7 +23,7 @@ class GetVocabularyNameViewController: UIViewController {
     
     private let textField:UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Введите название"
+        textField.placeholder = "Новый словарь"
         textField.font = .standartFont
         textField.textColor = .textColorLight
         textField.textAlignment = .center

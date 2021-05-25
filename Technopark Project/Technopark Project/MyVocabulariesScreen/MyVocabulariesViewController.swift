@@ -102,20 +102,12 @@ class MyVocabulariesViewController: UIViewController {
         }
         addButton.addSubview(addIcon)
         
-        addButton.addTarget(self, action: #selector(newSettingController), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(newController), for: .touchUpInside)
     }
      
     @objc
-    private func newSettingController() {
+    private func newController() {
         let newViewController = GetVocabularyNameViewController()
-//        vc.configure(with: .init(account: account, root: rootController))
-//
-//        let transition = CATransition()
-//        transition.duration = 0.7
-//        transition.type = CATransitionType.push
-//        transition.subtype = CATransitionSubtype.fromRight
-//        self.window!.layer.add(transition, forKey: kCATransition)
-//
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }

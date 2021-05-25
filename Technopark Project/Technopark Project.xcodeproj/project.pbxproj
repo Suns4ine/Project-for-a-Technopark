@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */; };
+		282503F5265C2BC600AFE886 /* MyExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */; };
+		282503FC265C40AB00AFE886 /* MyExercisesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */; };
+		282503FF265C416200AFE886 /* MyExercisesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503FE265C416200AFE886 /* MyExercisesModel.swift */; };
+		28250402265C43AA00AFE886 /* MyExercisesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28250401265C43AA00AFE886 /* MyExercisesCollectionViewCell.swift */; };
 		28FEC4E8265ABF2700CED56C /* MyVocabulariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */; };
 		28FEC4EC265AC32700CED56C /* MyVocabulariesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */; };
 		28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FEC4EE265AD11500CED56C /* MyVocabulariesModel.swift */; };
@@ -58,6 +62,10 @@
 
 /* Begin PBXFileReference section */
 		282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVocabularyNameViewController.swift; sourceTree = "<group>"; };
+		282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesViewController.swift; sourceTree = "<group>"; };
+		282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesHeadView.swift; sourceTree = "<group>"; };
+		282503FE265C416200AFE886 /* MyExercisesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesModel.swift; sourceTree = "<group>"; };
+		28250401265C43AA00AFE886 /* MyExercisesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesCollectionViewCell.swift; sourceTree = "<group>"; };
 		28FEC4E7265ABF2700CED56C /* MyVocabulariesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesViewController.swift; sourceTree = "<group>"; };
 		28FEC4EB265AC32700CED56C /* MyVocabulariesHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesHeadView.swift; sourceTree = "<group>"; };
 		28FEC4EE265AD11500CED56C /* MyVocabulariesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVocabulariesModel.swift; sourceTree = "<group>"; };
@@ -122,6 +130,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282503EE265BECB100AFE886 /* MyExercisesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */,
+				282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */,
+				282503FE265C416200AFE886 /* MyExercisesModel.swift */,
+				28250401265C43AA00AFE886 /* MyExercisesCollectionViewCell.swift */,
+			);
+			path = MyExercisesScreen;
+			sourceTree = "<group>";
+		};
 		28FEC4E6265ABEB800CED56C /* MyVocabulariesScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +261,7 @@
 		35B0AED0261DCFBB00CBBBE0 /* Technopark Project */ = {
 			isa = PBXGroup;
 			children = (
+				282503EE265BECB100AFE886 /* MyExercisesScreen */,
 				28FEC4E6265ABEB800CED56C /* MyVocabulariesScreen */,
 				354064472659E19C00806581 /* LessonScreen */,
 				354064402659E0C500806581 /* Another Files */,
@@ -406,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28250402265C43AA00AFE886 /* MyExercisesCollectionViewCell.swift in Sources */,
 				28FEC4E8265ABF2700CED56C /* MyVocabulariesViewController.swift in Sources */,
 				35406453265A0BAD00806581 /* LessonHeaderView.swift in Sources */,
 				35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */,
@@ -424,13 +445,16 @@
 				35406456265A711400806581 /* LessonViewModel.swift in Sources */,
 				350FDF622657D44500F63784 /* EducationalMaterial.swift in Sources */,
 				350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */,
+				282503F5265C2BC600AFE886 /* MyExercisesViewController.swift in Sources */,
 				350FDF5F2657D34300F63784 /* Exercises.swift in Sources */,
 				350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */,
 				282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */,
 				28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
 				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,
+				282503FF265C416200AFE886 /* MyExercisesModel.swift in Sources */,
 				3538901C26567F14000A9CB1 /* Account.swift in Sources */,
+				282503FC265C40AB00AFE886 /* MyExercisesHeadView.swift in Sources */,
 				28FEC4EC265AC32700CED56C /* MyVocabulariesHeadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

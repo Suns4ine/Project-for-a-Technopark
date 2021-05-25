@@ -90,8 +90,8 @@ final class MainHeaderView: UIView {
     
     @objc
     private func newSettingController() {
-        let vc = MyVocabulariesViewController()//SettingViewController()
- //       vc.configure(with: .init(account: account, root: rootController))
+        let vc = SettingViewController()
+        vc.configure(with: .init(account: account, root: rootController))
         
         let transition = CATransition()
         transition.duration = 0.7

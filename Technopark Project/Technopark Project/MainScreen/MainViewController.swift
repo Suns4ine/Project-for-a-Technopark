@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     
 //    private var vocabularies: [Vocabulary] = [.init(name: "Растения", progress: 100, succses: true) , .init(name: "Глаголы", progress: 56, succses: false), .init(name: "Учеба", progress: 12, succses: false), .init(name: "Школа", progress: 99, succses: false)]
     
-    private var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.alwaysBounceVertical = false
         tableView.backgroundColor = .clear
@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
         tableView.frame = view.frame
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: "MainTableViewCell")
         
-     setup()
+        setup()
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,7 +77,18 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource, ButtonDelegate {
+    
+    func newVocabularyController() {
+        let newViewController = MyVocabulariesViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    func newExercisesController() {
+        let newViewController = MyExercisesViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
     //Колличество ячейек
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EducationalMaterialCells.count
@@ -89,6 +100,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 for: indexPath) as? MainTableViewCell else { return .init() }
         
         cell.configure(with: EducationalMaterialCells[indexPath.row])
+        cell.delegate = self
         return cell
     }
     //Высота ячейки
