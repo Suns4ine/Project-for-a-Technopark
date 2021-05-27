@@ -99,11 +99,7 @@ final class MainTableViewCell: UITableViewCell {
         titleLabel.text = model.title
         titleIcon.image = model.image
         educationalMaterial = model.material
-        if (model.title == "Мои словари"){
-            nextScreenButton.addTarget(self, action: #selector(newVocabularyController), for: .touchUpInside)
-        } else {
-            nextScreenButton.addTarget(self, action: #selector(newExercisesController), for: .touchUpInside)
-        }
+        addTarget(model: model)
     }
     
     @objc
@@ -114,6 +110,16 @@ final class MainTableViewCell: UITableViewCell {
     @objc
     private func newExercisesController() {
         delegate?.newExercisesController()
+    }
+    
+    private func addTarget(model: EducationalMaterialModel) {
+        switch model {
+        case let model where model.title == "Мои словари":
+            nextScreenButton.addTarget(self, action: #selector(newVocabularyController), for: .touchUpInside)
+        case let model where model.title == "Упражнения":
+            nextScreenButton.addTarget(self, action: #selector(newExercisesController), for: .touchUpInside)
+        default: break
+        }
     }
     
     private func setup() {
