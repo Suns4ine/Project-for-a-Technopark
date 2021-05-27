@@ -12,6 +12,8 @@ import PinLayout
 final class MainTableViewCell: UITableViewCell {
     
     private var educationalMaterial = [EducationalMaterial]()
+    weak var delegate: ButtonDelegate?
+    private let nextScreenButton = UIButton()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -62,14 +64,20 @@ final class MainTableViewCell: UITableViewCell {
         
         titleLabel.pin
             .sizeToFit()
-            .top(27)
-            .left(19)
+            .top()
+            .left()
 
         titleIcon.pin
             .after(of: titleLabel)
-            .margin(11)
+            .marginHorizontal(11)
             .size(24)
-            .top(16)
+            .top()
+        
+        nextScreenButton.pin
+            .height(29)
+            .width(192)
+            .top(27)
+            .left(19)
 
         if educationalMaterial.isEmpty {
             subTitleLabel.pin
@@ -91,10 +99,32 @@ final class MainTableViewCell: UITableViewCell {
         titleLabel.text = model.title
         titleIcon.image = model.image
         educationalMaterial = model.material
+        addTarget(model: model)
+    }
+    
+    @objc
+    private func newVocabularyController() {
+        delegate?.newVocabularyController()
+    }
+    
+    @objc
+    private func newExercisesController() {
+        delegate?.newExercisesController()
+    }
+    
+    private func addTarget(model: EducationalMaterialModel) {
+        switch model {
+        case let model where model.title == "Мои словари":
+            nextScreenButton.addTarget(self, action: #selector(newVocabularyController), for: .touchUpInside)
+        case let model where model.title == "Упражнения":
+            nextScreenButton.addTarget(self, action: #selector(newExercisesController), for: .touchUpInside)
+        default: break
+        }
     }
     
     private func setup() {
-        [titleLabel, titleIcon, mainCollectionView, subTitleLabel].forEach { contentView.addSubview($0) }
+        [nextScreenButton, mainCollectionView, subTitleLabel].forEach { contentView.addSubview($0) }
+        [titleLabel, titleIcon].forEach { nextScreenButton.addSubview($0) }
         
         selectionStyle = .none
         backgroundColor = .clear
@@ -107,9 +137,7 @@ final class MainTableViewCell: UITableViewCell {
     }
 }
 
-
-
-extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,4 +164,9 @@ extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return CGFloat(10.5)
     }
     
+}
+
+protocol  ButtonDelegate: AnyObject {
+    func newVocabularyController()
+    func newExercisesController()
 }
