@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.alwaysBounceVertical = false
+        tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         return tableView
     }()

@@ -40,7 +40,7 @@ final class VocabularyEmptyView: UIView {
         return button
     }()
     
-    init(frame: CGRect, root: UIViewController, model: MyVocabulariesModel) {
+    init(frame: CGRect, root: UIViewController, model: VocabularyModel) {
         super.init(frame: frame)
         
         titleLabel.text = "Добавьте первое слово"

@@ -52,6 +52,8 @@
 		35F2EF77265C4B3400DB5D18 /* VocabularyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F2EF76265C4B3400DB5D18 /* VocabularyHeaderView.swift */; };
 		35F2EF7A265C4C3300DB5D18 /* VocabularyEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F2EF79265C4C3300DB5D18 /* VocabularyEmptyView.swift */; };
 		35F2EF7D265C4D1000DB5D18 /* VocabularyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F2EF7C265C4D1000DB5D18 /* VocabularyModel.swift */; };
+		35F2EF83265D21A000DB5D18 /* VocabularyFilledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F2EF82265D21A000DB5D18 /* VocabularyFilledView.swift */; };
+		35F2EF87265D764800DB5D18 /* TableWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F2EF86265D764800DB5D18 /* TableWordViewCell.swift */; };
 		80F8B8CADC11032D7D5475D2 /* Pods_Technopark_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B310626BCFE5D5BB07D27789 /* Pods_Technopark_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +105,8 @@
 		35F2EF76265C4B3400DB5D18 /* VocabularyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyHeaderView.swift; sourceTree = "<group>"; };
 		35F2EF79265C4C3300DB5D18 /* VocabularyEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyEmptyView.swift; sourceTree = "<group>"; };
 		35F2EF7C265C4D1000DB5D18 /* VocabularyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyModel.swift; sourceTree = "<group>"; };
+		35F2EF82265D21A000DB5D18 /* VocabularyFilledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyFilledView.swift; sourceTree = "<group>"; };
+		35F2EF86265D764800DB5D18 /* TableWordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableWordViewCell.swift; sourceTree = "<group>"; };
 		3877BF5374ABDBD396E569BA /* Pods-Technopark Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Technopark Project.debug.xcconfig"; path = "Target Support Files/Pods-Technopark Project/Pods-Technopark Project.debug.xcconfig"; sourceTree = "<group>"; };
 		6CDCBFD39F09A6C952994170 /* Pods-Technopark Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Technopark Project.release.xcconfig"; path = "Target Support Files/Pods-Technopark Project/Pods-Technopark Project.release.xcconfig"; sourceTree = "<group>"; };
 		B310626BCFE5D5BB07D27789 /* Pods_Technopark_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Technopark_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,7 +254,9 @@
 				35F2EF72265C3E7600DB5D18 /* VocabularyViewController.swift */,
 				35F2EF76265C4B3400DB5D18 /* VocabularyHeaderView.swift */,
 				35F2EF79265C4C3300DB5D18 /* VocabularyEmptyView.swift */,
+				35F2EF82265D21A000DB5D18 /* VocabularyFilledView.swift */,
 				35F2EF7C265C4D1000DB5D18 /* VocabularyModel.swift */,
+				35F2EF86265D764800DB5D18 /* TableWordViewCell.swift */,
 			);
 			path = VocabularyScreen;
 			sourceTree = "<group>";
@@ -417,8 +423,10 @@
 				35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */,
 				35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */,
 				350FDF662657E65C00F63784 /* MainHeaderView.swift in Sources */,
+				35F2EF87265D764800DB5D18 /* TableWordViewCell.swift in Sources */,
 				35406456265A711400806581 /* LessonViewModel.swift in Sources */,
 				35F2EF7A265C4C3300DB5D18 /* VocabularyEmptyView.swift in Sources */,
+				35F2EF83265D21A000DB5D18 /* VocabularyFilledView.swift in Sources */,
 				35F2EF73265C3E7600DB5D18 /* VocabularyViewController.swift in Sources */,
 				350FDF622657D44500F63784 /* EducationalMaterial.swift in Sources */,
 				350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */,

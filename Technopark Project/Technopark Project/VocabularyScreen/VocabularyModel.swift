@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct MyVocabulariesModel {
+struct VocabularyModel {
     var name: String
+    var vocabulary: Vocabulary
 }
