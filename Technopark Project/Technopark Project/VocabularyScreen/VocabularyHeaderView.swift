@@ -68,20 +68,22 @@ final class VocabularyHeaderView: UIView {
             .right(18)
             .top(57)
         
-        if !vocabulary.words.isEmpty {
-            statisticIcon.pin
-                .size(24)
-                .top(57)
-                .before(of: settingIcon)
-                .marginHorizontal(20)
-        }
+//        if !vocabulary.words.isEmpty {
+//            statisticIcon.pin
+//                .size(24)
+//                .top(57)
+//                .before(of: settingIcon)
+//                .marginHorizontal(20)
+//        }
         
         titleLabel.pin
-            .top(43)
-            .height(29)
-            .after(of: backIcon)
-            .before(of: vocabulary.words.isEmpty ? settingIcon : statisticIcon)
-            .margin(10)
+            .top(53)
+            .sizeToFit()
+            .hCenter()
+//            .height(29)
+//            .after(of: backIcon)
+//            .before(of: vocabulary.words.isEmpty ? settingIcon : statisticIcon)
+//            .margin(10)
         
     }
     
