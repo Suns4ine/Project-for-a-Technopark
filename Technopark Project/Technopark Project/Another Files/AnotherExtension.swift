@@ -12,6 +12,7 @@ extension UIFont {
     static let bigFont = UIFont(name: "Inter-SemiBold", size: 42)
     static let standartFont = UIFont(name: "Inter-SemiBold", size: 24)
     static let smallButtonFont = UIFont(name: "Inter-SemiBold", size: 16)
+    static let smallLabelFont = UIFont(name: "Inter-Light", size: 14)
 }
 
 extension Bundle {
