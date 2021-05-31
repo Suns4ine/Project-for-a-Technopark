@@ -63,16 +63,16 @@ final class HeaderWordView: UIView {
             .left(21)
             .top(57)
         
-        settingIcon.pin
-            .size(24)
-            .right(18)
-            .top(57)
-        
-        toShareIcon.pin
-            .size(24)
-            .top(57)
-            .before(of: settingIcon)
-            .marginHorizontal(20)
+//        settingIcon.pin
+//            .size(24)
+//            .right(18)
+//            .top(57)
+//
+//        toShareIcon.pin
+//            .size(24)
+//            .top(57)
+//            .before(of: settingIcon)
+//            .marginHorizontal(20)
         
         titleLabel.pin
             .sizeToFit()

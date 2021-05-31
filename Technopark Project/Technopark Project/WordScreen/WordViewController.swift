@@ -11,36 +11,53 @@ import UIKit
 
 class WordViewController: UIViewController, UIScrollViewDelegate {
     
+    private let arrayButton = ["Редактировать", "Удалить"]
     private var word: Word!
     private var vocabulary = Vocabulary(name: "Погода", progress: 12, succses: false, words: [Word(name: "Animal", translation: "Животное"), Word(name: "Build", translation: "Строить")], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 0)//vocabulary: Vocabulary!// Vocabulary!
     
     private lazy var headerWordView = HeaderWordView(frame: .zero, root: self, model: .init(name: "Погода", vocabulary: vocabulary))
     
-    
-    let subtitleLabel: UILabel = {
+    private let wordLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-        label.numberOfLines = 0
-        label.sizeToFit()
-        label.textColor = UIColor.black
-        //label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .bigFont
+        label.textColor = .textColorLight
+        label.textAlignment = .center
+        label.numberOfLines = 1
         return label
     }()
     
-    let subtitleLabel1: UILabel = {
+    private let underlineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .viewColor
+        return view
+    }()
+    
+    private let titleTranslationLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-        label.numberOfLines = 0
-        label.sizeToFit()
-        label.textColor = UIColor.black
-        //label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .standartFont
+        label.textColor = .textColorLight
+        label.textAlignment = .center
+        label.numberOfLines = 1
         return label
     }()
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let icnImage = UIImageView()
+    private let translationWordLabel: UILabel = {
+        let label = UILabel()
+        label.font = .standartFont
+        label.textColor = .textColorLight
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        return label
+    }()
     
+    private var wordTabelView: UITableView = {
+        let table = UITableView()
+        table.backgroundColor = .clear
+        table.alwaysBounceVertical = false
+        table.showsVerticalScrollIndicator = false
+        table.separatorStyle = .none
+        return table
+    }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -56,7 +73,13 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        word = .init(name: "Rain", translation: "Дождь", anotherTranslation: nil, partOfSpeech: nil, examples: nil, otherMeanings: nil)
+        
+        wordTabelView.delegate = self
+        wordTabelView.dataSource = self
+        wordTabelView.register(WordTabelViewCell.self, forCellReuseIdentifier: "WordTabelViewCell")
         view.backgroundColor = .backGroundOtherColor
+        
         setup()
     }
     
@@ -68,25 +91,37 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
             .horizontally()
             .height(84)
         
-        scrollView.pin
-            //.height(800)
+        wordLabel.pin
             .below(of: headerWordView)
-            .horizontally()
-            .bottom(20)
+            .marginVertical(73)
+            .hCenter()
+            .sizeToFit()
+            
+        underlineView.pin
+            .below(of: wordLabel)
+            .marginVertical(10)
+            .hCenter()
+            .width(wordLabel.frame.width + 10)
+            .height(1)
         
-        contentView.pin
-            .all()
+        titleTranslationLabel.pin
+            .sizeToFit()
+            .below(of: underlineView)
+            .marginVertical(13)
+            .left(21)
         
-        subtitleLabel.pin
-            .height(500)
-            .top()
-            .horizontally()
-        
-        subtitleLabel1.pin
-            .below(of: subtitleLabel)
-            .marginVertical(20)
-            .horizontally()
-            .height(500)
+        translationWordLabel.pin
+            .sizeToFit()
+            .below(of: titleTranslationLabel)
+            .marginVertical(23)
+            .left(48)
+            
+        wordTabelView.pin
+            .below(of: translationWordLabel)
+            .marginVertical(25)
+            .horizontally(110)
+            .bottom(40)
+
     }
     
     func configure(word: Word) {
@@ -94,18 +129,32 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setup() {
-        [headerWordView, scrollView].forEach { view.addSubview($0) }
-        scrollView.backgroundColor = .otherColor
-        icnImage.image = UIImage(named: "fi-rr-arrow-left 1")
-        scrollView.addSubview(contentView)
-        contentView.backgroundColor = .green
-        contentView.addSubview(subtitleLabel)
-        contentView.addSubview(subtitleLabel1)
-//        scrollView.frame = self.view.bounds
-        scrollView.delegate = self
-        //scrollView.frame = self.view.frame
-        //scrollView.contentSize = CGSize(width: view.bounds.width, height: 800)
-//        self.scrollView.decelerationRate = .fast
-//        self.scrollView.showsHorizontalScrollIndicator = false
+        [headerWordView, wordLabel, underlineView, titleTranslationLabel,
+         translationWordLabel, wordTabelView].forEach { view.addSubview($0) }
+        
+        titleTranslationLabel.text = "Перевод:"
+        wordLabel.text = word.name
+        translationWordLabel.text = word.translation
     }
+}
+
+
+extension WordViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "WordTabelViewCell",
+                for: indexPath) as? WordTabelViewCell else { return .init() }
+        
+        cell.configure(with: arrayButton[indexPath.row])
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
+    
 }
