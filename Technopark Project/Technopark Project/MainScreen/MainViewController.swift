@@ -60,11 +60,11 @@ class MainViewController: UIViewController {
             .left()
             .right()
         
-        reminderIcon.pin
-            .below(of: headerView)
-            .marginVertical(15)
-            .size(24)
-            .right(21.25)
+//        reminderIcon.pin
+//            .below(of: headerView)
+//            .marginVertical(15)
+//            .size(24)
+//            .right(21.25)
         
         tableView.pin
             .below(of: headerView, aligned: .center)

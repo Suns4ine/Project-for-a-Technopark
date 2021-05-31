@@ -30,7 +30,7 @@ class SettingViewController: UIViewController {
         return tableView
     }()
     
-    private var arrayNames = ["Уведомления", "Звук в приложении", "Тема", "Очистить кэш", "О приложении"]
+    private var arrayNames = ["Тема", "Шрифт", "О приложении", "Очистить кэш"]//["Уведомления", "Звук в приложении", "Тема", "Очистить кэш", "О приложении"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

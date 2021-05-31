@@ -59,11 +59,14 @@ final class MyExercisesHeadView: UIView {
             .top(57)
         
         titleLabel.pin
-            .top(43)
-            .height(29)
-            .after(of: backIcon)
-            .before(of: settingIcon)
-            .margin(10)
+            .sizeToFit()
+            .top(53)
+            .hCenter()
+//            .top(43)
+//            .height(29)
+//            .after(of: backIcon)
+//            .before(of: settingIcon)
+//            .margin(10)
         
     }
     

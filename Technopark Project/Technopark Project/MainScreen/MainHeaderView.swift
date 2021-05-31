@@ -53,17 +53,19 @@ final class MainHeaderView: UIView {
             .bottom(5)
         
         labelNamed.pin
-            .height(buttonSetting.frame.height - 12)
-            .width(buttonSetting.frame.width - 10 - iconAccount.frame.width)
-            .top()
+            .sizeToFit()
+//            .height(buttonSetting.frame.height - 12)
+//            .width(buttonSetting.frame.width - 10 - iconAccount.frame.width)
+            //.top(self.pin.safeArea)
             .hCenter()
+            .top(20)
         
-        if account != nil {
-            iconAccount.pin
-                .size(24)
-                .left(8)
-                .bottom(41)
-        }
+//        if account != nil {
+//            iconAccount.pin
+//                .size(24)
+//                .left(8)
+//                .bottom(41)
+//        }
     }
     
     func configure(wuth model: SettingViewModel) {
