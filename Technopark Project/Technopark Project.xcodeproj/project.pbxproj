@@ -56,6 +56,10 @@
 		35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AEDA261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld */; };
 		35B0AEDE261DCFBE00CBBBE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */; };
 		35B0AEE1261DCFBE00CBBBE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B0AEDF261DCFBE00CBBBE0 /* LaunchScreen.storyboard */; };
+		35BFEB1D266552D000182DF7 /* HeaderWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BFEB1A266552D000182DF7 /* HeaderWordView.swift */; };
+		35BFEB1E266552D000182DF7 /* WordTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BFEB1B266552D000182DF7 /* WordTabelViewCell.swift */; };
+		35BFEB1F266552D000182DF7 /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BFEB1C266552D000182DF7 /* WordViewController.swift */; };
+		35BFEB222665538500182DF7 /* VocabularyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BFEB212665538500182DF7 /* VocabularyModel.swift */; };
 		35CE68AA265A77B4007C37EB /* LessonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE68A9265A77B4007C37EB /* LessonCollectionViewCell.swift */; };
 		35CE68AE265A781E007C37EB /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE68AD265A781E007C37EB /* Word.swift */; };
 		80F8B8CADC11032D7D5475D2 /* Pods_Technopark_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B310626BCFE5D5BB07D27789 /* Pods_Technopark_Project.framework */; };
@@ -113,6 +117,10 @@
 		35B0AEDD261DCFBE00CBBBE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35B0AEE0261DCFBE00CBBBE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35B0AEE2261DCFBE00CBBBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35BFEB1A266552D000182DF7 /* HeaderWordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderWordView.swift; sourceTree = "<group>"; };
+		35BFEB1B266552D000182DF7 /* WordTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordTabelViewCell.swift; sourceTree = "<group>"; };
+		35BFEB1C266552D000182DF7 /* WordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
+		35BFEB212665538500182DF7 /* VocabularyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyModel.swift; sourceTree = "<group>"; };
 		35CE68A9265A77B4007C37EB /* LessonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCollectionViewCell.swift; sourceTree = "<group>"; };
 		35CE68AD265A781E007C37EB /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		3877BF5374ABDBD396E569BA /* Pods-Technopark Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Technopark Project.debug.xcconfig"; path = "Target Support Files/Pods-Technopark Project/Pods-Technopark Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +272,7 @@
 		35B0AED0261DCFBB00CBBBE0 /* Technopark Project */ = {
 			isa = PBXGroup;
 			children = (
+				35BFEB19266552D000182DF7 /* WordScreen */,
 				282503EE265BECB100AFE886 /* MyExercisesScreen */,
 				28FEC4E6265ABEB800CED56C /* MyVocabulariesScreen */,
 				354064472659E19C00806581 /* LessonScreen */,
@@ -277,8 +286,19 @@
 				3538901E26567F8C000A9CB1 /* Vocabulary.swift */,
 				35B0AEE2261DCFBE00CBBBE0 /* Info.plist */,
 				35CE68AD265A781E007C37EB /* Word.swift */,
+				35BFEB212665538500182DF7 /* VocabularyModel.swift */,
 			);
 			path = "Technopark Project";
+			sourceTree = "<group>";
+		};
+		35BFEB19266552D000182DF7 /* WordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				35BFEB1A266552D000182DF7 /* HeaderWordView.swift */,
+				35BFEB1B266552D000182DF7 /* WordTabelViewCell.swift */,
+				35BFEB1C266552D000182DF7 /* WordViewController.swift */,
+			);
+			path = WordScreen;
 			sourceTree = "<group>";
 		};
 		7632E16C8FECC4EFB1171716 /* Frameworks */ = {
@@ -444,8 +464,10 @@
 				350FDFEC2659824300F63784 /* SettingTableViewCell.swift in Sources */,
 				35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */,
 				35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */,
+				35BFEB1D266552D000182DF7 /* HeaderWordView.swift in Sources */,
 				28FEC4F3265ADFD200CED56C /* MyVocabulariesCollectionViewCell.swift in Sources */,
 				350FDF662657E65C00F63784 /* MainHeaderView.swift in Sources */,
+				35BFEB1F266552D000182DF7 /* WordViewController.swift in Sources */,
 				35406456265A711400806581 /* LessonViewModel.swift in Sources */,
 				350FDF622657D44500F63784 /* EducationalMaterial.swift in Sources */,
 				350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */,
@@ -455,7 +477,9 @@
 				282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */,
 				28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
+				35BFEB222665538500182DF7 /* VocabularyModel.swift in Sources */,
 				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,
+				35BFEB1E266552D000182DF7 /* WordTabelViewCell.swift in Sources */,
 				282503FF265C416200AFE886 /* MyExercisesModel.swift in Sources */,
 				3538901C26567F14000A9CB1 /* Account.swift in Sources */,
 				282503FC265C40AB00AFE886 /* MyExercisesHeadView.swift in Sources */,
