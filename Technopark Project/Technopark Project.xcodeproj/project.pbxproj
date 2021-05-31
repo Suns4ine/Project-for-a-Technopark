@@ -32,6 +32,8 @@
 		350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFE72659758D00F63784 /* AnotherExtension.swift */; };
 		350FDFEC2659824300F63784 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFEB2659824300F63784 /* SettingTableViewCell.swift */; };
 		350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350FDFEE2659829E00F63784 /* SettingViewModel.swift */; };
+		3536C4452661385E004EE0DD /* HeaderWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3536C4442661385E004EE0DD /* HeaderWordView.swift */; };
+		3536C44826613A6C004EE0DD /* VocabularyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3536C44726613A6C004EE0DD /* VocabularyModel.swift */; };
 		3538901C26567F14000A9CB1 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538901B26567F14000A9CB1 /* Account.swift */; };
 		3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538901E26567F8C000A9CB1 /* Vocabulary.swift */; };
 		353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353890212656DA38000A9CB1 /* MainTableViewCell.swift */; };
@@ -40,6 +42,8 @@
 		3540644A2659E45E00806581 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354064492659E45E00806581 /* LessonViewController.swift */; };
 		35406453265A0BAD00806581 /* LessonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406452265A0BAD00806581 /* LessonHeaderView.swift */; };
 		35406456265A711400806581 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406455265A711400806581 /* LessonViewModel.swift */; };
+		355FC76E26612AA3009740BD /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355FC76D26612AA3009740BD /* WordViewController.swift */; };
+		35810946266524140081A411 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35810945266524140081A411 /* GoogleService-Info.plist */; };
 		35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */; };
 		35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */; };
 		35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0AED5261DCFBB00CBBBE0 /* MainViewController.swift */; };
@@ -77,6 +81,8 @@
 		350FDFE72659758D00F63784 /* AnotherExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherExtension.swift; sourceTree = "<group>"; };
 		350FDFEB2659824300F63784 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		350FDFEE2659829E00F63784 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		3536C4442661385E004EE0DD /* HeaderWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWordView.swift; sourceTree = "<group>"; };
+		3536C44726613A6C004EE0DD /* VocabularyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyModel.swift; sourceTree = "<group>"; };
 		3538901B26567F14000A9CB1 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		3538901E26567F8C000A9CB1 /* Vocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vocabulary.swift; sourceTree = "<group>"; };
 		353890212656DA38000A9CB1 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		354064492659E45E00806581 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		35406452265A0BAD00806581 /* LessonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonHeaderView.swift; sourceTree = "<group>"; };
 		35406455265A711400806581 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		355FC76D26612AA3009740BD /* WordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
+		35810945266524140081A411 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		35B0AECE261DCFBB00CBBBE0 /* Technopark Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Technopark Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B0AED1261DCFBB00CBBBE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35B0AED3261DCFBB00CBBBE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +207,15 @@
 			path = LessonScreen;
 			sourceTree = "<group>";
 		};
+		355FC76C266129E1009740BD /* WordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				355FC76D26612AA3009740BD /* WordViewController.swift */,
+				3536C4442661385E004EE0DD /* HeaderWordView.swift */,
+			);
+			path = WordScreen;
+			sourceTree = "<group>";
+		};
 		35B0AEC5261DCFBB00CBBBE0 = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +237,7 @@
 		35B0AED0261DCFBB00CBBBE0 /* Technopark Project */ = {
 			isa = PBXGroup;
 			children = (
+				355FC76C266129E1009740BD /* WordScreen */,
 				354064472659E19C00806581 /* LessonScreen */,
 				354064402659E0C500806581 /* Another Files */,
 				350FDFF1265982B100F63784 /* SettingScreen */,
@@ -230,7 +248,9 @@
 				350FDF5E2657D34300F63784 /* Exercises.swift */,
 				3538901E26567F8C000A9CB1 /* Vocabulary.swift */,
 				35B0AEE2261DCFBE00CBBBE0 /* Info.plist */,
+				35810945266524140081A411 /* GoogleService-Info.plist */,
 				35CE68AD265A781E007C37EB /* Word.swift */,
+				3536C44726613A6C004EE0DD /* VocabularyModel.swift */,
 			);
 			path = "Technopark Project";
 			sourceTree = "<group>";
@@ -331,6 +351,7 @@
 				350FDFB62658691000F63784 /* Inter-ExtraBoldItalic.ttf in Resources */,
 				350FDFB72658691000F63784 /* Inter-ThinItalicBETA.ttf in Resources */,
 				35B0AEDE261DCFBE00CBBBE0 /* Assets.xcassets in Resources */,
+				35810946266524140081A411 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,10 +404,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3536C4452661385E004EE0DD /* HeaderWordView.swift in Sources */,
+				3536C44826613A6C004EE0DD /* VocabularyModel.swift in Sources */,
 				35406453265A0BAD00806581 /* LessonHeaderView.swift in Sources */,
 				35B0AEDC261DCFBB00CBBBE0 /* Technopark_Project.xcdatamodeld in Sources */,
 				3538E7C3264E35B400D8CB58 /* UIColorExtension.swift in Sources */,
 				35CE68AA265A77B4007C37EB /* LessonCollectionViewCell.swift in Sources */,
+				355FC76E26612AA3009740BD /* WordViewController.swift in Sources */,
 				353890252657A6B3000A9CB1 /* MainCollectionViewCell.swift in Sources */,
 				353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */,
 				3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */,

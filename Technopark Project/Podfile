@@ -8,4 +8,5 @@ target 'Technopark Project' do
   # Pods for Technopark Project
 	pod 'PinLayout'
 	pod 'Kingfisher'
+	pod 'Firebase/Analytics'
 end
