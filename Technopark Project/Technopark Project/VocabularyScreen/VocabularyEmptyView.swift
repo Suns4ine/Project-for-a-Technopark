@@ -11,6 +11,8 @@ import PinLayout
 
 final class VocabularyEmptyView: UIView {
     
+    weak var delegate: AddWordDelegate?
+    
     private let titleLabel: UILabel = {
        let label = UILabel()
         label.font = .standartFont
@@ -40,9 +42,9 @@ final class VocabularyEmptyView: UIView {
         return button
     }()
     
-    init(frame: CGRect, root: UIViewController, model: VocabularyModel) {
+    init(frame: CGRect, root: UIViewController) {
         super.init(frame: frame)
-        
+
         titleLabel.text = "Добавьте первое слово"
         labelButton.text = "Добавить"
         setup()
@@ -74,5 +76,15 @@ final class VocabularyEmptyView: UIView {
     private func setup() {
         [titleLabel, addWordButton].forEach { addSubview($0)}
         addWordButton.addSubview(labelButton)
+        
+        addWordButton.addTarget(self, action: #selector(newWord), for: .touchUpInside)
     }
+     
+    @objc
+    private func newWord() {
+        delegate?.newWord()
+    }
+}
+protocol  AddWordDelegate: AnyObject {
+    func newWord()
 }

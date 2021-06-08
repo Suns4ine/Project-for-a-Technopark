@@ -10,8 +10,6 @@ import PinLayout
 
 class MainViewController: UIViewController {
     
-//    private var vocabularies: [Vocabulary] = [.init(name: "Растения", progress: 100, succses: true) , .init(name: "Глаголы", progress: 56, succses: false), .init(name: "Учеба", progress: 12, succses: false), .init(name: "Школа", progress: 99, succses: false)]
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.alwaysBounceVertical = false
@@ -33,8 +31,8 @@ class MainViewController: UIViewController {
     }()
     
     private lazy var EducationalMaterialCells: [EducationalMaterialModel] = [
-        .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", material: []),//[].newArrayEducation(ar: vocabularies)),
-        .init(image: UIImage(named: "fitness 1"), title: "Упражнения", material: [.exercises(.init(name: "Уить слова")), .exercises(.init(name: "Хардкор")), .exercises(.init(name: "10 слов дня")), .exercises(.init(name: "Салянка"))])]
+        .init(image: UIImage(named: "fi-rr-book"), title: "Мои словари", material: [].newArrayEducation(ar: myVocabularies)),
+        .init(image: UIImage(named: "fitness 1"), title: "Упражнения", material: [].newArrayEducation(ar: exercises))]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,10 +75,26 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource, ButtonDelegate {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainDelegate, PopDelegate {
+    
+    func didFinishVC(controller: UIViewController) {
+        controller.navigationController?.popViewController(animated: true)
+    }
+    
+    func openVocabularyViewController(position: Int) {
+        let newViewController = VocabularyViewController()
+        newViewController.getVocabulary(vocabulary_: myVocabularies[position])
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+    
+    func openLessonViewController(position: Int) {
+        let newViewController = ChooseVocabularyViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
     
     func newVocabularyController() {
         let newViewController = MyVocabulariesViewController()
+        newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     

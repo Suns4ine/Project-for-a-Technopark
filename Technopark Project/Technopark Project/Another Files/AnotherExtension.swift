@@ -15,6 +15,13 @@ extension UIFont {
     static let smallLabelFont = UIFont(name: "Inter-Light", size: 14)
 }
 
+extension String
+{
+    func trim() -> String {
+        return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+}
+
 extension Bundle {
     static func appName() -> String {
         guard let dictionary = Bundle.main.infoDictionary else {

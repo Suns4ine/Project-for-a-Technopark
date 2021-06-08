@@ -11,18 +11,15 @@ import UIKit
 
 class MyVocabulariesViewController: UIViewController {
     
+    weak var delegate: PopDelegate?
+    
     private let addButton = UIButton()
     
-    private var vocabularies: [Vocabulary] = [.init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Море", progress: 100, succses: true, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Море", progress: 100, succses: true, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),]
-    
-    private lazy var myVocabulariesHeadView = MyVocabulariesHeadView(frame: .zero, root: self, model: .init(name: "Мои словари"))
-    
+    private lazy var myVocabulariesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Мои словари",
+                                                                                                backButtonIsHidden: false,
+                                                                                                settingButtonIsHidden: false,
+                                                                                                crossButtonIsHidden: true))
+
     private let addIcon: UIImageView = {
         let icon = UIImageView()
         icon.image = UIImage(named: "fi-rr-plus")
@@ -54,6 +51,7 @@ class MyVocabulariesViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backGroundOtherColor
         
+        myVocabulariesHeadView.delegate = self
         myVocabulariesCollectionView.delegate = self
         myVocabulariesCollectionView.dataSource = self
         myVocabulariesCollectionView.register(MyVocabulariesCollectionViewCell.self,
@@ -66,8 +64,8 @@ class MyVocabulariesViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         myVocabulariesHeadView.pin
-            .height(84)
-            .top()
+            .height(40)
+            .top(view.pin.safeArea)
             .left()
             .right()
         
@@ -102,21 +100,32 @@ class MyVocabulariesViewController: UIViewController {
         }
         addButton.addSubview(addIcon)
         
-        addButton.addTarget(self, action: #selector(newController), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(newVocabulary), for: .touchUpInside)
     }
      
     @objc
-    private func newController() {
+    private func newVocabulary() {
         let newViewController = GetVocabularyNameViewController()
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 
-extension MyVocabulariesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MyVocabulariesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, VocabularyDelegate, HeaderDelegate {
+    
+    func moveBack() {
+        self.navigationController?.popViewController(animated: true)
+        delegate?.didFinishVC(controller: self)
+    }
+    
+    func openVocabularyViewController(position: Int) {
+        let newViewController = VocabularyViewController()
+        newViewController.getVocabulary(vocabulary_: myVocabularies[position])
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vocabularies.count
+        return myVocabularies.count
     }
     
     //Вызов нужной ячейки
@@ -125,7 +134,8 @@ extension MyVocabulariesViewController: UICollectionViewDelegate, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyVocabulariesCollectionViewCell",
                                                             for: indexPath) as? MyVocabulariesCollectionViewCell else { return .init() }
         
-        cell.configure(with: vocabularies[indexPath.row])
+        cell.configure(with: myVocabularies[indexPath.row], model: indexPath.row)
+        cell.delegate = self
         return cell
     }
     
@@ -140,5 +150,4 @@ extension MyVocabulariesViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(15)
     }
-    
 }

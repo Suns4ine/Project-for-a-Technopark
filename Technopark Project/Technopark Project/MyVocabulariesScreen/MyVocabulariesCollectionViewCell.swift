@@ -11,6 +11,8 @@ import PinLayout
 
 final class MyVocabulariesCollectionViewCell: UICollectionViewCell {
     
+    private var cellPosition = 0
+    weak var delegate: VocabularyDelegate?
     private var vocabulary: Vocabulary!
     
     private let titleLabel: UILabel = {
@@ -76,11 +78,18 @@ final class MyVocabulariesCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(with model: Vocabulary) {
+    func configure(with model: Vocabulary, model position: Int) {
         vocabulary = model
         titleLabel.text = model.name
         subTitleLabel.text = "\(model.progress)%"
-        
+        cellPosition = position
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openVocabularyViewController))
+        self.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc
+    private func openVocabularyViewController(position: Int) {
+        delegate?.openVocabularyViewController(position: cellPosition)
     }
     
     private func setup() {
@@ -93,4 +102,8 @@ final class MyVocabulariesCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
     }
+}
+
+protocol  VocabularyDelegate: AnyObject {
+    func openVocabularyViewController(position: Int)
 }

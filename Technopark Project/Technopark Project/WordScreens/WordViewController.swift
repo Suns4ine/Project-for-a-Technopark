@@ -13,9 +13,9 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
     
     private let arrayButton = ["Редактировать", "Удалить"]
     private var word: Word!
-    private var vocabulary = Vocabulary(name: "Погода", progress: 12, succses: false, words: [Word(name: "Animal", translation: "Животное"), Word(name: "Build", translation: "Строить")], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 0)//vocabulary: Vocabulary!// Vocabulary!
+    private var vocabulary = Vocabulary(name: "Погода", progress: 12, succses: false, words: [Word(name: "Animal", translation: "Животное"), Word(name: "Build", translation: "Строить")])//vocabulary: Vocabulary!// Vocabulary!
     
-    private lazy var headerWordView = HeaderWordView(frame: .zero, root: self, model: .init(name: "Погода", vocabulary: vocabulary))
+    private lazy var headerWordView = HeaderWordView(frame: .zero, root: self, model: vocabulary)
     
     private let wordLabel: UILabel = {
         let label = UILabel()
@@ -73,7 +73,7 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        word = .init(name: "Rain", translation: "Дождь", anotherTranslation: nil, partOfSpeech: nil, examples: nil, otherMeanings: nil)
+        word = .init(name: "Rain", translation: "Дождь")
         
         wordTabelView.delegate = self
         wordTabelView.dataSource = self

@@ -11,7 +11,7 @@ import PinLayout
 
 final class MyExercisesCollectionViewCell: UICollectionViewCell {
     
-    weak var delegate: CellDelegate?
+    weak var delegate: MyExercisesCellDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -62,7 +62,7 @@ final class MyExercisesCollectionViewCell: UICollectionViewCell {
     }
 }
 
-protocol  CellDelegate: AnyObject {
+protocol  MyExercisesCellDelegate: AnyObject {
     func openNewController()
 }
 

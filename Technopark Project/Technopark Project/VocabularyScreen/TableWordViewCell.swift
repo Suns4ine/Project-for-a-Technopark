@@ -50,12 +50,15 @@ final class TableWordViewCell: UITableViewCell {
         backgroundColor = .clear
         
         setup()
-        wordLabel.text = "Loin"
-        translationWordLabel.text = "Лев"
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with model: Word) {
+        wordLabel.text = model.name
+        translationWordLabel.text = model.translation
     }
     
     override func layoutSubviews() {

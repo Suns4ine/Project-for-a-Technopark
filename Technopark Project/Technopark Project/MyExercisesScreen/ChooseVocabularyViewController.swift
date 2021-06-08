@@ -11,15 +11,10 @@ import UIKit
 
 class ChooseVocabularyViewController: UIViewController {
     
-    private var vocabularies: [Vocabulary] = [.init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Море", progress: 100, succses: true, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Море", progress: 100, succses: true, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),
-                                              .init(name: "Лес", progress: 56, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 1),]
-    
-    private lazy var myExercisesHeadView = MyExercisesHeadView(frame: .zero, root: self, model: .init(name: "Выберете словарь"))
+    private lazy var myExercisesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Выберете словарь",
+                                                                                                backButtonIsHidden: false,
+                                                                                                settingButtonIsHidden: true,
+                                                                                                crossButtonIsHidden: true))
     
     private let searchVocabularyBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -87,7 +82,7 @@ extension ChooseVocabularyViewController: UICollectionViewDelegate, UICollection
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vocabularies.count
+        return myVocabularies.count
     }
     
     //Вызов нужной ячейки
@@ -96,7 +91,7 @@ extension ChooseVocabularyViewController: UICollectionViewDelegate, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyVocabulariesCollectionViewCell",
                                                             for: indexPath) as? MyVocabulariesCollectionViewCell else { return .init() }
         
-        cell.configure(with: vocabularies[indexPath.row])
+        cell.configure(with: myVocabularies[indexPath.row], model: indexPath.row)
         return cell
     }
     

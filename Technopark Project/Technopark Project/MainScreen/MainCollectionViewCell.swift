@@ -13,6 +13,8 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     private var succses = false
     private var vocabulary = false
+    private var cellPosition = 0
+    weak var delegate: MainDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -78,15 +80,22 @@ final class MainCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(with model: EducationalMaterial) {
+    func configure(with model: EducationalMaterial, model position: Int) {
+        
         switch model {
         case .vocabulary(let vocobulary):
             titleLabel.text = vocobulary.name
             subTitleLabel.text = "\(vocobulary.progress)%"
             succses = vocobulary.succses
             vocabulary = true
+            cellPosition = position
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openVocabularyViewController))
+            self.addGestureRecognizer(gestureRecognizer)
         case .exercises(let exercises):
             titleLabel.text = exercises.name
+            cellPosition = position
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openLessonViewController))
+            self.addGestureRecognizer(gestureRecognizer)
         }
     }
     
@@ -100,4 +109,22 @@ final class MainCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
     }
+    
+    @objc
+    private func openVocabularyViewController(position: Int) {
+        delegate?.openVocabularyViewController(position: cellPosition)
+    }
+    
+    @objc
+    private func openLessonViewController(position: Int) {
+        delegate?.openLessonViewController(position: cellPosition)
+    }
+}
+
+@objc
+protocol  MainDelegate: AnyObject {
+    @objc optional func newVocabularyController()
+    @objc optional func newExercisesController()
+    func openVocabularyViewController(position: Int)
+    func openLessonViewController(position: Int)
 }

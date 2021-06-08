@@ -11,18 +11,27 @@ import UIKit
 
 class VocabularyViewController: UIViewController {
     
-    private lazy var vocabulary = Vocabulary(name: "Погода", progress: 12, succses: false, words: [Word(name: "A", translation: "b"), Word(name: "v", translation: "v")], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 0)//vocabulary: Vocabulary!
+    var vocabulary: Vocabulary = myVocabularies[0]
     
-    private lazy var vocabularyHeaderView = VocabularyHeaderView(frame: .init(), root: self, model: .init(name: "Погода", vocabulary: vocabulary))
-    private lazy var vocabularyEmptyView = VocabularyEmptyView(frame: .init(), root: self, model: .init(name: "", vocabulary: .init(name: "", progress: 0, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 0)))
+    func getVocabulary (vocabulary_: Vocabulary) {
+        vocabulary = vocabulary_
+    }
     
-    private lazy var vocabularyFilledView = VocabularyFilledView()
+    private lazy var vocabularyHeaderView = HeaderView(frame: .zero, root: self, model: .init(name: vocabulary.name,
+                                                                                              backButtonIsHidden: true,
+                                                                                              settingButtonIsHidden: false,
+                                                                                              crossButtonIsHidden: false))
+    
+    private lazy var vocabularyEmptyView = VocabularyEmptyView(frame: .init(), root: self)
+    
+    private lazy var vocabularyFilledView = VocabularyFilledView(frame: .init(), root: self, model: vocabulary)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .backGroundOtherColor
-        
+        vocabularyEmptyView.delegate = self
+        vocabularyFilledView.delegate = self
         setup()
     }
     
@@ -52,5 +61,13 @@ class VocabularyViewController: UIViewController {
         [vocabularyHeaderView, vocabularyEmptyView, vocabularyFilledView].forEach { view.addSubview($0)}
         
         //vocabularyFilledView.backgroundColor = .otherColor
+    }
+}
+extension VocabularyViewController: AddWordDelegate {
+    
+    func newWord() {
+        let newViewController = GetWordNameViewController()
+        newViewController.getVocabulary(vocabulary_: vocabulary)
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }

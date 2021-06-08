@@ -17,7 +17,10 @@ class MyExercisesViewController: UIViewController {
                                           .init(name: "Учить слова"),
                                           .init(name: "Учить слова")]
     
-    private lazy var myExercisesHeadView = MyExercisesHeadView(frame: .zero, root: self, model: .init(name: "Упражнения"))
+    private lazy var myExercisesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Упражнения",
+                                                                                                backButtonIsHidden: false,
+                                                                                                settingButtonIsHidden: true,
+                                                                                                crossButtonIsHidden: true))
     
     private lazy var myExercisesCollectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -69,7 +72,7 @@ class MyExercisesViewController: UIViewController {
     }
 }
 
-extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CellDelegate {
+extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MyExercisesCellDelegate {
     
     func openNewController() {
         let newViewController = ChooseVocabularyViewController()

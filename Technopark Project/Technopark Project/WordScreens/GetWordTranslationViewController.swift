@@ -1,20 +1,26 @@
 //
-//  GetVocabularyNameViewController.swift
+//  GetWordTranslationViewController.swift
 //  Technopark Project
 //
-//  Created by Михаил Попов on 24.05.2021.
+//  Created by Михаил Попов on 04.06.2021.
 //
 
 import Foundation
 import PinLayout
 import UIKit
 
-class GetVocabularyNameViewController: UIViewController {
+class GetWordTranslationViewController: UIViewController {
     
-    private lazy var myVocabulariesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Введите название",
-                                                                                                backButtonIsHidden: false,
-                                                                                                settingButtonIsHidden: true,
-                                                                                                crossButtonIsHidden: true))
+    var vocabulary: Vocabulary = myVocabularies[0]
+    
+    func getVocabulary (vocabulary_: Vocabulary) {
+        vocabulary = vocabulary_
+    }
+    
+    private lazy var headerWordView = HeaderView (frame: .zero, root: self, model: .init(name: "Введите перевод",
+                                                                                         backButtonIsHidden: true,
+                                                                                         settingButtonIsHidden: true,
+                                                                                         crossButtonIsHidden: false))
     
     private let continueButton = UIButton()
     
@@ -27,7 +33,7 @@ class GetVocabularyNameViewController: UIViewController {
     
     private let textField:UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Новый словарь"
+        textField.placeholder = "Перевод"
         textField.font = .standartFont
         textField.textColor = .textColorLight
         textField.textAlignment = .center
@@ -44,14 +50,14 @@ class GetVocabularyNameViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        myVocabulariesHeadView.pin
+        headerWordView.pin
             .height(84)
             .top()
             .left()
             .right()
         
         textField.pin
-            .below(of: myVocabulariesHeadView)
+            .below(of: headerWordView)
             .marginVertical(176)
             .left(80)
             .right(80)
@@ -69,7 +75,7 @@ class GetVocabularyNameViewController: UIViewController {
         
     }
     private func setup(){
-        [myVocabulariesHeadView, continueButton, textField].forEach{
+        [headerWordView, continueButton, textField].forEach{
             view.addSubview($0)
         }
         continueButton.addSubview(arrowIcon)
@@ -77,7 +83,7 @@ class GetVocabularyNameViewController: UIViewController {
         continueButton.isHidden = true
         textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         
-        continueButton.addTarget(self, action: #selector(addNewVocabulary), for: .touchUpInside)
+        continueButton.addTarget(self, action: #selector(addNewWord), for: .touchUpInside)
     }
     
     @objc
@@ -97,12 +103,9 @@ class GetVocabularyNameViewController: UIViewController {
     }
     
     @objc
-    private func addNewVocabulary() {
+    private func addNewWord() {
         let newViewController = VocabularyViewController()
-        let newVocabulary = Vocabulary.init(name: textField.text!, progress: 0, succses: false, words: [])
-        myVocabularies.append(newVocabulary)
-        newViewController.getVocabulary(vocabulary_: myVocabularies[myVocabularies.count - 1])
         self.navigationController?.pushViewController(newViewController, animated: true)
+        myVocabularies.append(.init(name: textField.text!, progress: 0, succses: false, words: []))
     }
 }
-

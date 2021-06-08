@@ -12,7 +12,7 @@ import PinLayout
 final class MainTableViewCell: UITableViewCell {
     
     private var educationalMaterial = [EducationalMaterial]()
-    weak var delegate: ButtonDelegate?
+    weak var delegate: MainDelegate?
     private let nextScreenButton = UIButton()
     
     private let titleLabel: UILabel = {
@@ -103,13 +103,13 @@ final class MainTableViewCell: UITableViewCell {
     }
     
     @objc
-    private func newVocabularyController() {
-        delegate?.newVocabularyController()
+    internal func newVocabularyController() {
+        delegate?.newVocabularyController?()
     }
     
     @objc
-    private func newExercisesController() {
-        delegate?.newExercisesController()
+    internal func newExercisesController() {
+        delegate?.newExercisesController?()
     }
     
     private func addTarget(model: EducationalMaterialModel) {
@@ -137,7 +137,15 @@ final class MainTableViewCell: UITableViewCell {
     }
 }
 
-extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MainDelegate{
+    
+    func openVocabularyViewController(position: Int) {
+        delegate?.openVocabularyViewController(position: position)
+    }
+    
+    func openLessonViewController(position: Int) {
+        delegate?.openLessonViewController(position: position)
+    }
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -150,7 +158,8 @@ extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell",
                                                             for: indexPath) as? MainCollectionViewCell else { return .init() }
         
-        cell.configure(with: educationalMaterial[indexPath.row])
+        cell.configure(with: educationalMaterial[indexPath.row], model: indexPath.row)
+        cell.delegate = self
         return cell
     }
     
@@ -164,9 +173,4 @@ extension MainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return CGFloat(10.5)
     }
     
-}
-
-protocol  ButtonDelegate: AnyObject {
-    func newVocabularyController()
-    func newExercisesController()
 }
