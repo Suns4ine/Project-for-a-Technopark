@@ -10,9 +10,17 @@ import UIKit
 
 extension UIFont {
     static let bigFont = UIFont(name: "Inter-SemiBold", size: 42)
+    static let logoFont = UIFont(name: "AbhayaLibre-Regular", size: 48)
     static let standartFont = UIFont(name: "Inter-SemiBold", size: 24)
     static let smallButtonFont = UIFont(name: "Inter-SemiBold", size: 16)
     static let smallLabelFont = UIFont(name: "Inter-Light", size: 14)
+}
+
+extension UITextField {
+    func textOffset (size: CGFloat) {
+        self.leftView = UIView(frame: CGRect(x: self.frame.minX, y: self.frame.minY, width: size, height: self.frame.height))
+        self.leftViewMode = .always
+    }
 }
 
 extension Bundle {

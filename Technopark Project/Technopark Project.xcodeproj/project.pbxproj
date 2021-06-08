@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281836FE266EF07100E430E2 /* HeadRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281836FD266EF07100E430E2 /* HeadRegistrationModel.swift */; };
+		28183705266EF08800E430E2 /* RegistrationHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28183700266EF08800E430E2 /* RegistrationHeadView.swift */; };
+		28183706266EF08800E430E2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28183701266EF08800E430E2 /* MainViewController.swift */; };
+		28183707266EF08800E430E2 /* RegistrationScreen in Resources */ = {isa = PBXBuildFile; fileRef = 28183702266EF08800E430E2 /* RegistrationScreen */; };
+		28183709266EF08800E430E2 /* LogInScreen in Resources */ = {isa = PBXBuildFile; fileRef = 28183704266EF08800E430E2 /* LogInScreen */; };
 		282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */; };
 		282503F5265C2BC600AFE886 /* MyExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */; };
 		282503FC265C40AB00AFE886 /* MyExercisesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */; };
@@ -71,6 +76,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		281836FB266EF01400E430E2 /* AbhayaLibre-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AbhayaLibre-Regular.ttf"; path = "../../../../../Registration-Screens/Technopark Project/Technopark Project/Fonts/AbhayaLibre-Regular.ttf"; sourceTree = "<group>"; };
+		281836FD266EF07100E430E2 /* HeadRegistrationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadRegistrationModel.swift; path = "Technopark Project/Registration/HeadRegistrationModel.swift"; sourceTree = SOURCE_ROOT; };
+		28183700266EF08800E430E2 /* RegistrationHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationHeadView.swift; path = "Technopark Project/Registration/RegistrationHeadView.swift"; sourceTree = SOURCE_ROOT; };
+		28183701266EF08800E430E2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = "Technopark Project/Registration/MainViewController.swift"; sourceTree = SOURCE_ROOT; };
+		28183702266EF08800E430E2 /* RegistrationScreen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RegistrationScreen; path = "Technopark Project/Registration/RegistrationScreen"; sourceTree = SOURCE_ROOT; };
+		28183704266EF08800E430E2 /* LogInScreen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LogInScreen; path = "Technopark Project/Registration/LogInScreen"; sourceTree = SOURCE_ROOT; };
 		282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVocabularyNameViewController.swift; sourceTree = "<group>"; };
 		282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesViewController.swift; sourceTree = "<group>"; };
 		282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesHeadView.swift; sourceTree = "<group>"; };
@@ -150,6 +161,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281836FC266EF04D00E430E2 /* RegistrationScreens */ = {
+			isa = PBXGroup;
+			children = (
+				28183702266EF08800E430E2 /* RegistrationScreen */,
+				28183704266EF08800E430E2 /* LogInScreen */,
+				28183701266EF08800E430E2 /* MainViewController.swift */,
+				28183700266EF08800E430E2 /* RegistrationHeadView.swift */,
+				281836FD266EF07100E430E2 /* HeadRegistrationModel.swift */,
+			);
+			path = RegistrationScreens;
+			sourceTree = "<group>";
+		};
 		282503EE265BECB100AFE886 /* MyExercisesScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +200,7 @@
 		350FDF69265863C700F63784 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				281836FB266EF01400E430E2 /* AbhayaLibre-Regular.ttf */,
 				350FDFB22658691000F63784 /* Inter-Black.ttf */,
 				350FDFAC2658690F00F63784 /* Inter-BlackItalic.ttf */,
 				350FDFB12658691000F63784 /* Inter-Bold.ttf */,
@@ -295,6 +319,7 @@
 		35B0AED0261DCFBB00CBBBE0 /* Technopark Project */ = {
 			isa = PBXGroup;
 			children = (
+				281836FC266EF04D00E430E2 /* RegistrationScreens */,
 				3580848426659AF600852828 /* VocabularyScreen */,
 				35BFEB19266552D000182DF7 /* WordScreen */,
 				282503EE265BECB100AFE886 /* MyExercisesScreen */,
@@ -404,9 +429,11 @@
 				350FDFB52658691000F63784 /* Inter-ThinBETA.ttf in Resources */,
 				35B0AEE1261DCFBE00CBBBE0 /* LaunchScreen.storyboard in Resources */,
 				350FDFBC2658691000F63784 /* Inter-SemiBoldItalic.ttf in Resources */,
+				28183707266EF08800E430E2 /* RegistrationScreen in Resources */,
 				350FDFB82658691000F63784 /* Inter-Italic.ttf in Resources */,
 				350FDFB92658691000F63784 /* Inter-ExtraBold.ttf in Resources */,
 				350FDFB42658691000F63784 /* Inter-LightItalicBETA.ttf in Resources */,
+				28183709266EF08800E430E2 /* LogInScreen in Resources */,
 				350FDFBB2658691000F63784 /* Inter-Regular.ttf in Resources */,
 				350FDFC42658691000F63784 /* Inter-Black.ttf in Resources */,
 				350FDFC02658691000F63784 /* Inter-Medium.ttf in Resources */,
@@ -483,6 +510,7 @@
 				3580848D26659AF600852828 /* VocabularyViewController.swift in Sources */,
 				353890252657A6B3000A9CB1 /* MainCollectionViewCell.swift in Sources */,
 				353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */,
+				28183706266EF08800E430E2 /* MainViewController.swift in Sources */,
 				3580848C26659AF600852828 /* VocabularyHeaderView.swift in Sources */,
 				3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */,
 				350FDFDA265880EE00F63784 /* SettingViewController.swift in Sources */,
@@ -505,7 +533,9 @@
 				282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */,
 				28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
+				281836FE266EF07100E430E2 /* HeadRegistrationModel.swift in Sources */,
 				3580848F26659AF600852828 /* VocabularyFilledView.swift in Sources */,
+				28183705266EF08800E430E2 /* RegistrationHeadView.swift in Sources */,
 				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,
 				35BFEB1E266552D000182DF7 /* WordTabelViewCell.swift in Sources */,
 				282503FF265C416200AFE886 /* MyExercisesModel.swift in Sources */,
