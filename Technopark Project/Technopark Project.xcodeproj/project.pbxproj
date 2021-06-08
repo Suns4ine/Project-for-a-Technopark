@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		281836FE266EF07100E430E2 /* HeadRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281836FD266EF07100E430E2 /* HeadRegistrationModel.swift */; };
-		28183705266EF08800E430E2 /* RegistrationHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28183700266EF08800E430E2 /* RegistrationHeadView.swift */; };
-		28183706266EF08800E430E2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28183701266EF08800E430E2 /* MainViewController.swift */; };
-		28183707266EF08800E430E2 /* RegistrationScreen in Resources */ = {isa = PBXBuildFile; fileRef = 28183702266EF08800E430E2 /* RegistrationScreen */; };
-		28183709266EF08800E430E2 /* LogInScreen in Resources */ = {isa = PBXBuildFile; fileRef = 28183704266EF08800E430E2 /* LogInScreen */; };
+		2822103F266EF38A00DEAB85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822103E266EF38A00DEAB85 /* MainViewController.swift */; };
+		28221042266EF39300DEAB85 /* LogInScreen in Resources */ = {isa = PBXBuildFile; fileRef = 28221041266EF39300DEAB85 /* LogInScreen */; };
+		28221045266EF39800DEAB85 /* RegistrationScreen in Resources */ = {isa = PBXBuildFile; fileRef = 28221044266EF39800DEAB85 /* RegistrationScreen */; };
+		28221048266EF39D00DEAB85 /* RegistrationHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28221047266EF39D00DEAB85 /* RegistrationHeadView.swift */; };
+		2822104B266EF3A200DEAB85 /* HeadRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822104A266EF3A200DEAB85 /* HeadRegistrationModel.swift */; };
 		282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */; };
 		282503F5265C2BC600AFE886 /* MyExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */; };
 		282503FC265C40AB00AFE886 /* MyExercisesHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */; };
@@ -77,11 +77,11 @@
 
 /* Begin PBXFileReference section */
 		281836FB266EF01400E430E2 /* AbhayaLibre-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "AbhayaLibre-Regular.ttf"; path = "../../../../../Registration-Screens/Technopark Project/Technopark Project/Fonts/AbhayaLibre-Regular.ttf"; sourceTree = "<group>"; };
-		281836FD266EF07100E430E2 /* HeadRegistrationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeadRegistrationModel.swift; path = "Technopark Project/Registration/HeadRegistrationModel.swift"; sourceTree = SOURCE_ROOT; };
-		28183700266EF08800E430E2 /* RegistrationHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationHeadView.swift; path = "Technopark Project/Registration/RegistrationHeadView.swift"; sourceTree = SOURCE_ROOT; };
-		28183701266EF08800E430E2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = "Technopark Project/Registration/MainViewController.swift"; sourceTree = SOURCE_ROOT; };
-		28183702266EF08800E430E2 /* RegistrationScreen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RegistrationScreen; path = "Technopark Project/Registration/RegistrationScreen"; sourceTree = SOURCE_ROOT; };
-		28183704266EF08800E430E2 /* LogInScreen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LogInScreen; path = "Technopark Project/Registration/LogInScreen"; sourceTree = SOURCE_ROOT; };
+		2822103E266EF38A00DEAB85 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		28221041266EF39300DEAB85 /* LogInScreen */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LogInScreen; sourceTree = "<group>"; };
+		28221044266EF39800DEAB85 /* RegistrationScreen */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RegistrationScreen; sourceTree = "<group>"; };
+		28221047266EF39D00DEAB85 /* RegistrationHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationHeadView.swift; sourceTree = "<group>"; };
+		2822104A266EF3A200DEAB85 /* HeadRegistrationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadRegistrationModel.swift; sourceTree = "<group>"; };
 		282503E9265BDABB00AFE886 /* GetVocabularyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetVocabularyNameViewController.swift; sourceTree = "<group>"; };
 		282503F4265C2BC600AFE886 /* MyExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesViewController.swift; sourceTree = "<group>"; };
 		282503FB265C40AB00AFE886 /* MyExercisesHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercisesHeadView.swift; sourceTree = "<group>"; };
@@ -164,11 +164,11 @@
 		281836FC266EF04D00E430E2 /* RegistrationScreens */ = {
 			isa = PBXGroup;
 			children = (
-				28183702266EF08800E430E2 /* RegistrationScreen */,
-				28183704266EF08800E430E2 /* LogInScreen */,
-				28183701266EF08800E430E2 /* MainViewController.swift */,
-				28183700266EF08800E430E2 /* RegistrationHeadView.swift */,
-				281836FD266EF07100E430E2 /* HeadRegistrationModel.swift */,
+				28221044266EF39800DEAB85 /* RegistrationScreen */,
+				28221041266EF39300DEAB85 /* LogInScreen */,
+				2822103E266EF38A00DEAB85 /* MainViewController.swift */,
+				28221047266EF39D00DEAB85 /* RegistrationHeadView.swift */,
+				2822104A266EF3A200DEAB85 /* HeadRegistrationModel.swift */,
 			);
 			path = RegistrationScreens;
 			sourceTree = "<group>";
@@ -426,15 +426,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				350FDFBA2658691000F63784 /* Inter-ExtraLightBETA.ttf in Resources */,
+				28221042266EF39300DEAB85 /* LogInScreen in Resources */,
 				350FDFB52658691000F63784 /* Inter-ThinBETA.ttf in Resources */,
 				35B0AEE1261DCFBE00CBBBE0 /* LaunchScreen.storyboard in Resources */,
 				350FDFBC2658691000F63784 /* Inter-SemiBoldItalic.ttf in Resources */,
-				28183707266EF08800E430E2 /* RegistrationScreen in Resources */,
 				350FDFB82658691000F63784 /* Inter-Italic.ttf in Resources */,
 				350FDFB92658691000F63784 /* Inter-ExtraBold.ttf in Resources */,
 				350FDFB42658691000F63784 /* Inter-LightItalicBETA.ttf in Resources */,
-				28183709266EF08800E430E2 /* LogInScreen in Resources */,
 				350FDFBB2658691000F63784 /* Inter-Regular.ttf in Resources */,
+				28221045266EF39800DEAB85 /* RegistrationScreen in Resources */,
 				350FDFC42658691000F63784 /* Inter-Black.ttf in Resources */,
 				350FDFC02658691000F63784 /* Inter-Medium.ttf in Resources */,
 				350FDFBF2658691000F63784 /* Inter-LightBETA.ttf in Resources */,
@@ -510,7 +510,6 @@
 				3580848D26659AF600852828 /* VocabularyViewController.swift in Sources */,
 				353890252657A6B3000A9CB1 /* MainCollectionViewCell.swift in Sources */,
 				353890222656DA38000A9CB1 /* MainTableViewCell.swift in Sources */,
-				28183706266EF08800E430E2 /* MainViewController.swift in Sources */,
 				3580848C26659AF600852828 /* VocabularyHeaderView.swift in Sources */,
 				3538901F26567F8C000A9CB1 /* Vocabulary.swift in Sources */,
 				350FDFDA265880EE00F63784 /* SettingViewController.swift in Sources */,
@@ -527,15 +526,16 @@
 				350FDF622657D44500F63784 /* EducationalMaterial.swift in Sources */,
 				350FDFEF2659829E00F63784 /* SettingViewModel.swift in Sources */,
 				3580848E26659AF600852828 /* VocabularyModel.swift in Sources */,
+				2822104B266EF3A200DEAB85 /* HeadRegistrationModel.swift in Sources */,
 				282503F5265C2BC600AFE886 /* MyExercisesViewController.swift in Sources */,
 				350FDF5F2657D34300F63784 /* Exercises.swift in Sources */,
 				350FDFE82659758E00F63784 /* AnotherExtension.swift in Sources */,
 				282503EA265BDABB00AFE886 /* GetVocabularyNameViewController.swift in Sources */,
 				28FEC4EF265AD11500CED56C /* MyVocabulariesModel.swift in Sources */,
 				35B0AED4261DCFBB00CBBBE0 /* SceneDelegate.swift in Sources */,
-				281836FE266EF07100E430E2 /* HeadRegistrationModel.swift in Sources */,
 				3580848F26659AF600852828 /* VocabularyFilledView.swift in Sources */,
-				28183705266EF08800E430E2 /* RegistrationHeadView.swift in Sources */,
+				2822103F266EF38A00DEAB85 /* MainViewController.swift in Sources */,
+				28221048266EF39D00DEAB85 /* RegistrationHeadView.swift in Sources */,
 				3540644A2659E45E00806581 /* LessonViewController.swift in Sources */,
 				35BFEB1E266552D000182DF7 /* WordTabelViewCell.swift in Sources */,
 				282503FF265C416200AFE886 /* MyExercisesModel.swift in Sources */,
