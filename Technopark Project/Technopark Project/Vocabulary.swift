@@ -12,9 +12,11 @@ struct Vocabulary {
     var progress: Int
     var succses: Bool
     var words: [Word]
-    var learnedWords: [Word]
-    var misspelledWords: [Word]
-    let dateCreate: Date
-    var dateOfChange: Date
-    var numberOfAttempts: Int
+//    var learnedWords: [Word]
+//    var misspelledWords: [Word]
+//    let dateCreate: Date
+//    var dateOfChange: Date
+//    var numberOfAttempts: Int
 }
+
+var myVocabularies: [Vocabulary] = [.init(name: "Лес", progress: 56, succses: false, words: [])]
