@@ -7,10 +7,9 @@
 
 import Foundation
 
-class Exercises {
+struct Exercises {
     var name: String
-    
-    init(name: String) {
-        self.name = name
-    }
 }
+var exercises: [Exercises] = [.init(name: "Уить слова")
+                            //.init(name: "Хардкор"), .init(name: "10 слов дня"), .init(name: "Салянка")
+]
