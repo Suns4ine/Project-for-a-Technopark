@@ -11,7 +11,7 @@ import PinLayout
 
 final class TableDeleteWordViewCell: UITableViewCell {
     
-    private let checkBox = CheckBox()
+    private let wordcheckBox = CheckBox()
     
     private let wordLabel: UILabel = {
         let label = UILabel()
@@ -85,7 +85,7 @@ final class TableDeleteWordViewCell: UITableViewCell {
             .marginHorizontal(29.5)
             .sizeToFit()
         
-        checkBox.pin
+        wordcheckBox.pin
             .size(24)
             .top(6)
             .right(30)
@@ -94,10 +94,9 @@ final class TableDeleteWordViewCell: UITableViewCell {
     func configure(with model: Word, model position: Int) {
         wordLabel.text = model.name
         translationWordLabel.text = model.translation
-//        cellPosition = position
     }
     
     private func setup() {
-        [wordLabel, translationWordLabel, separatorView, lineView, checkBox].forEach { addSubview($0) }
+        [wordLabel, translationWordLabel, separatorView, lineView, wordcheckBox].forEach { addSubview($0) }
     }
 }

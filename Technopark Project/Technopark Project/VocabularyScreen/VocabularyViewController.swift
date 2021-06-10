@@ -71,7 +71,8 @@ extension VocabularyViewController: AddWordDelegate, WordOpenDelegate, HeaderDel
     }
     
     func moveBack() {
-        delegate?.didFinishVC(controller: self)
+        let newViewController = MainViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     func deleteObjects() {

@@ -107,17 +107,11 @@ class GetVocabularyNameViewController: UIViewController{
         let newVocabulary = Vocabulary.init(name: textField.text!, progress: 0, succses: false, words: [])
         myVocabularies.append(newVocabulary)
         newViewController.getVocabulary(vocabulary_: myVocabularies[myVocabularies.count - 1])
-        newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 
-extension GetVocabularyNameViewController: HeaderDelegate, PopDelegate {
-    
-    func didFinishVC(controller: UIViewController) {
-        controller.navigationController?.popViewController(animated: false)
-        self.navigationController?.popViewController(animated: true)
-    }
+extension GetVocabularyNameViewController: HeaderDelegate {
     
     func moveBack() {
         delegate?.didFinishVC(controller: self)
