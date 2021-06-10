@@ -1,34 +1,47 @@
 //
-//  MyVocabulariesViewController.swift
+//  DeleteVocabulariesViewController.swift
 //  Technopark Project
 //
-//  Created by Михаил Попов on 23.05.2021.
+//  Created by Михаил Попов on 10.06.2021.
 //
 
 import Foundation
 import PinLayout
 import UIKit
 
-class MyVocabulariesViewController: UIViewController {
+class DeleteVocabulariesViewController: UIViewController {
     
     weak var delegate: PopDelegate?
     
-    private let addButton = UIButton()
-    
-    private lazy var myVocabulariesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Мои словари",
+    private lazy var myVocabulariesHeadView = DeleteHeaderView(frame: .zero, root: self, model: .init(name: "Мои словари",
                                                                                                 backButtonIsHidden: false,
                                                                                                 settingButtonIsHidden: false))
 
-    private let addIcon: UIImageView = {
+    private let checkIcon: UIImageView = {
         let icon = UIImageView()
-        icon.image = UIImage(named: "fi-rr-plus")
+        icon.image = UIImage(named: "fi-rr-list-check 1")
         icon.image = icon.image?.tinted(with: .iconColor)
         return icon
     }()
     
-    private let searchVocabularyBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        return searchBar
+    private let deleteButtonLabel: UILabel = {
+        let label = UILabel()
+        label.font = .smallButtonFont
+        label.textAlignment = .center
+        label.textColor = .textColorLight
+        label.sizeToFit()
+        return label
+    }()
+    
+    private let deleteButton: UIButton = {
+       let button = UIButton()
+        button.backgroundColor = .buttonColor
+        button.layer.cornerRadius = 24
+        button.layer.shadowColor = UIColor.shadowColor.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 4)
+        button.layer.shadowOpacity = 0.25
+        button.layer.shadowRadius = 1
+        return button
     }()
     
     private lazy var myVocabulariesCollectionView: UICollectionView = {
@@ -49,12 +62,13 @@ class MyVocabulariesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backGroundOtherColor
+        deleteButtonLabel.text = "Удалить"
         
         myVocabulariesHeadView.delegate = self
         myVocabulariesCollectionView.delegate = self
         myVocabulariesCollectionView.dataSource = self
-        myVocabulariesCollectionView.register(MyVocabulariesCollectionViewCell.self,
-                                              forCellWithReuseIdentifier: "MyVocabulariesCollectionViewCell")
+        myVocabulariesCollectionView.register(CollectionDeleteVocabulariesViewCell.self,
+                                              forCellWithReuseIdentifier: "CollectionDeleteVocabulariesViewCell")
         
         setup()
     }
@@ -68,69 +82,49 @@ class MyVocabulariesViewController: UIViewController {
             .left()
             .right()
         
-        addButton.pin
+        checkIcon.pin
             .size(24)
-            .right(35)
             .below(of: myVocabulariesHeadView)
-            .marginVertical(44)
+            .marginVertical(48)
+            .left(34)
         
-        addIcon.pin
-            .size(24)
-            .center()
-        
-        searchVocabularyBar.pin
-            .left(21)
-            .before(of: addIcon)
-            .marginHorizontal(16)
+        deleteButton.pin
+            .height(48)
+            .width(155)
+            .hCenter()
             .below(of: myVocabulariesHeadView)
             .marginVertical(32)
-            .height(48)
+        
+        deleteButtonLabel.pin
+            .center()
+            .sizeToFit()
         
         myVocabulariesCollectionView.pin
-            .below(of: searchVocabularyBar)
+            .below(of: deleteButton)
             .marginVertical(23)
             .horizontally()
             .bottom(view.pin.safeArea + 10)
     }
     
     private func setup(){
-        [myVocabulariesHeadView, addButton, searchVocabularyBar, myVocabulariesCollectionView].forEach{
+        [myVocabulariesHeadView, deleteButton, checkIcon, myVocabulariesCollectionView].forEach{
             view.addSubview($0)
         }
-        addButton.addSubview(addIcon)
+        deleteButton.addSubview(deleteButtonLabel)
         
-        addButton.addTarget(self, action: #selector(newVocabulary), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteVocabulary), for: .touchUpInside)
     }
      
     @objc
-    private func newVocabulary() {
-        let newViewController = GetVocabularyNameViewController()
-        newViewController.delegate = self
-        self.navigationController?.pushViewController(newViewController, animated: true)
+    private func deleteVocabulary() {
+        
     }
 }
 
-extension MyVocabulariesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, VocabularyDelegate, HeaderDelegate, PopDelegate {
-    
-    func didFinishVC(controller: UIViewController) {
-        controller.navigationController?.popViewController(animated: true)
-    }
+extension DeleteVocabulariesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HeaderDelegate {
     
     func moveBack() {
         delegate?.didFinishVC(controller: self)
-    }
-    
-    func deleteObjects() {
-        let newViewController = DeleteVocabulariesViewController()
-        newViewController.delegate = self
-        self.navigationController?.pushViewController(newViewController, animated: true)
-    }
-    
-    func openVocabularyViewController(position: Int) {
-        let newViewController = VocabularyViewController()
-        newViewController.delegate = self
-        newViewController.getVocabulary(vocabulary_: myVocabularies[position])
-        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     //Колличество ячеек
@@ -141,11 +135,10 @@ extension MyVocabulariesViewController: UICollectionViewDelegate, UICollectionVi
     //Вызов нужной ячейки
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyVocabulariesCollectionViewCell",
-                                                            for: indexPath) as? MyVocabulariesCollectionViewCell else { return .init() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionDeleteVocabulariesViewCell",
+                                                            for: indexPath) as? CollectionDeleteVocabulariesViewCell else { return .init() }
         
         cell.configure(with: myVocabularies[indexPath.row], model: indexPath.row)
-        cell.delegate = self
         return cell
     }
     

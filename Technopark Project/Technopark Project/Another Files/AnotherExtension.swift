@@ -58,3 +58,67 @@ extension UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
+
+class CheckBox: UIButton {
+    
+    private let checkedIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.image = UIImage(named: "fi-rr-checkbox")
+        icon.image = icon.image?.tinted(with: .iconColor)
+        return icon
+    }()
+    
+    private let uncheckedIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.image = UIImage(named: "fi-rr-checkbox-null")
+        icon.image = icon.image?.tinted(with: .iconColor)
+        return icon
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        checkedIcon.pin
+            .size(24)
+            .center()
+        
+        uncheckedIcon.pin
+            .size(24)
+            .center()
+    }
+    
+    var isChecked: Bool = false {
+        didSet {
+            if isChecked == true {
+                checkedIcon.isHidden = false
+                uncheckedIcon.isHidden = true
+            } else {
+                uncheckedIcon.isHidden = false
+                checkedIcon.isHidden = true
+            }
+        }
+    }
+        
+    @objc func buttonClicked(sender: UIButton) {
+        if sender == self {
+            isChecked = !isChecked
+        }
+    }
+    
+    private func setup() {
+        [checkedIcon, uncheckedIcon].forEach { self.addSubview($0) }
+        
+        self.addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
+        self.isChecked = false
+    }
+}

@@ -1,18 +1,17 @@
 //
-//  TableWordViewCell.swift
+//  TableDeleteWordViewCell.swift
 //  Technopark Project
 //
-//  Created by Vyacheslav Pronin on 25.05.2021.
+//  Created by Михаил Попов on 10.06.2021.
 //
 
 import Foundation
 import UIKit
 import PinLayout
 
-final class TableWordViewCell: UITableViewCell {
+final class TableDeleteWordViewCell: UITableViewCell {
     
-    weak var delegate: WordOpenDelegate?
-    var cellPosition: Int!
+    private let checkBox = CheckBox()
     
     private let wordLabel: UILabel = {
         let label = UILabel()
@@ -59,12 +58,6 @@ final class TableWordViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: Word, model position: Int) {
-        wordLabel.text = model.name
-        translationWordLabel.text = model.translation
-        cellPosition = position
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -91,21 +84,20 @@ final class TableWordViewCell: UITableViewCell {
             .after(of: separatorView)
             .marginHorizontal(29.5)
             .sizeToFit()
+        
+        checkBox.pin
+            .size(24)
+            .top(6)
+            .right(30)
+    }
+    
+    func configure(with model: Word, model position: Int) {
+        wordLabel.text = model.name
+        translationWordLabel.text = model.translation
+//        cellPosition = position
     }
     
     private func setup() {
-        [wordLabel, translationWordLabel, separatorView, lineView].forEach { addSubview($0) }
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openWordViewController))
-        self.addGestureRecognizer(gestureRecognizer)
+        [wordLabel, translationWordLabel, separatorView, lineView, checkBox].forEach { addSubview($0) }
     }
-    
-    @objc
-    private func openWordViewController(position: Int) {
-        delegate?.openWordViewController(position: cellPosition)
-    }
-}
-
-protocol  WordOpenDelegate: AnyObject {
-    func openWordViewController(position: Int)
 }

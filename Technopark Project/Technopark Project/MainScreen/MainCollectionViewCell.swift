@@ -13,7 +13,7 @@ final class MainCollectionViewCell: UICollectionViewCell {
     
     private var succses = false
     private var vocabulary = false
-    private var cellPosition = 0
+    private var cellPosition: Int!
     weak var delegate: MainDelegate?
     
     private let titleLabel: UILabel = {

@@ -13,8 +13,7 @@ class ChooseVocabularyViewController: UIViewController {
     
     private lazy var myExercisesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Выберете словарь",
                                                                                                 backButtonIsHidden: false,
-                                                                                                settingButtonIsHidden: true,
-                                                                                                crossButtonIsHidden: true))
+                                                                                                settingButtonIsHidden: true))
     
     private let searchVocabularyBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -53,7 +52,7 @@ class ChooseVocabularyViewController: UIViewController {
         
         myExercisesHeadView.pin
             .height(84)
-            .top()
+            .top(view.pin.safeArea)
             .left()
             .right()
         

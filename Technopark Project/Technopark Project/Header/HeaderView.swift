@@ -30,13 +30,6 @@ final class HeaderView: UIView {
         return icon
     }()
     
-    private let crossIcon: UIImageView = {
-       let icon = UIImageView()
-        icon.image = UIImage(named: "fi-rr-cross 1")
-        icon.image = icon.image?.tinted(with: .iconColor)
-        return icon
-    }()
-    
     private let titleLabel: UILabel = {
        let label = UILabel()
         label.font = .standartFont
@@ -51,11 +44,14 @@ final class HeaderView: UIView {
         
         titleLabel.text = model.name
         
-        backButton.isHidden = model.backButtonIsHidden
-        settingButton.isHidden = model.settingButtonIsHidden
-        
-        backButton.isEnabled = model.backButtonIsHidden
-        settingButton.isEnabled = model.settingButtonIsHidden
+        if model.backButtonIsHidden {
+            backButton.isHidden = true
+            backButton.isEnabled = true
+        }
+        if model.settingButtonIsHidden {
+            settingButton.isHidden = true
+            settingButton.isEnabled = true
+        }
         
         setup()
     }
@@ -67,14 +63,6 @@ final class HeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backIcon.pin
-            .size(24)
-            .center()
-        
-        settingIcon.pin
-            .size(24)
-            .center()
-        
         backButton.pin
             .size(24)
             .left(21)
@@ -85,6 +73,14 @@ final class HeaderView: UIView {
             .right(21)
             .vCenter()
         
+        backIcon.pin
+            .size(24)
+            .center()
+        
+        settingIcon.pin
+            .size(24)
+            .center()
+        
         titleLabel.pin
             .center()
             .height(60)
@@ -93,13 +89,12 @@ final class HeaderView: UIView {
     }
     
     private func setup () {
-        
-        backButton.addSubview(backIcon)
-        settingButton.addSubview(settingIcon)
-        
         [backButton, settingButton, titleLabel].forEach{
             self.addSubview($0)
         }
+        
+        backButton.addSubview(backIcon)
+        settingButton.addSubview(settingIcon)
         
         backButton.addTarget(self, action: #selector(moveBack), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(deleteObjects), for: .touchUpInside)

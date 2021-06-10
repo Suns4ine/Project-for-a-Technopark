@@ -11,6 +11,8 @@ import UIKit
 
 class GetWordNameViewController: UIViewController {
     
+    weak var delegate: PopDelegate?
+    
     var vocabulary: Vocabulary = myVocabularies[0]
     
     func getVocabulary (vocabulary_: Vocabulary) {
@@ -18,9 +20,8 @@ class GetWordNameViewController: UIViewController {
     }
     
     private lazy var headerWordView = HeaderView (frame: .zero, root: self, model: .init(name: "Введите слово",
-                                                                                         backButtonIsHidden: true,
-                                                                                         settingButtonIsHidden: true,
-                                                                                         crossButtonIsHidden: false))
+                                                                                         backButtonIsHidden: false,
+                                                                                         settingButtonIsHidden: true))
     
     private let continueButton = UIButton()
     
@@ -52,7 +53,7 @@ class GetWordNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backGroundSettingColor
-        
+        headerWordView.delegate = self
         setup()
     }
     
@@ -61,7 +62,7 @@ class GetWordNameViewController: UIViewController {
         
         headerWordView.pin
             .height(84)
-            .top()
+            .top(view.pin.safeArea)
             .left()
             .right()
         
@@ -128,11 +129,24 @@ class GetWordNameViewController: UIViewController {
     @objc
     private func addNewWord() {
         let newViewController = VocabularyViewController()
-        
-        self.navigationController?.pushViewController(newViewController, animated: true)
-        vocabulary.words.append(.init(name: nameTextField.text!,
+
+        let position = myVocabularies.firstIndex(where: {$0.name == vocabulary.name})!
+        myVocabularies[position].words.append(.init(name: nameTextField.text!,
                                       translation: translationTextField.text!))
-        newViewController.getVocabulary(vocabulary_: vocabulary)
+        newViewController.getVocabulary(vocabulary_: myVocabularies[position])
+        newViewController.delegate = self
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 
+extension GetWordNameViewController: HeaderDelegate, PopDelegate {
+    
+    func didFinishVC(controller: UIViewController) {
+        controller.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func moveBack() {
+        delegate?.didFinishVC(controller: self)
+    }
+}

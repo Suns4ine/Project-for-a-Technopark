@@ -11,5 +11,4 @@ struct HeaderModel {
     var name: String
     var backButtonIsHidden: Bool
     var settingButtonIsHidden: Bool
-    var crossButtonIsHidden: Bool
 }

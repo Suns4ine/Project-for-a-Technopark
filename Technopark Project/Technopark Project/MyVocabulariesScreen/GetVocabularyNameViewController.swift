@@ -9,12 +9,13 @@ import Foundation
 import PinLayout
 import UIKit
 
-class GetVocabularyNameViewController: UIViewController {
+class GetVocabularyNameViewController: UIViewController{
+    
+    weak var delegate: PopDelegate?
     
     private lazy var myVocabulariesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Введите название",
                                                                                                 backButtonIsHidden: false,
-                                                                                                settingButtonIsHidden: true,
-                                                                                                crossButtonIsHidden: true))
+                                                                                                settingButtonIsHidden: true))
     
     private let continueButton = UIButton()
     
@@ -46,7 +47,7 @@ class GetVocabularyNameViewController: UIViewController {
         
         myVocabulariesHeadView.pin
             .height(84)
-            .top()
+            .top(view.pin.safeArea)
             .left()
             .right()
         
@@ -72,9 +73,13 @@ class GetVocabularyNameViewController: UIViewController {
         [myVocabulariesHeadView, continueButton, textField].forEach{
             view.addSubview($0)
         }
+        myVocabulariesHeadView.delegate = self
+        
         continueButton.addSubview(arrowIcon)
+        
         continueButton.isEnabled = false
         continueButton.isHidden = true
+        
         textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         
         continueButton.addTarget(self, action: #selector(addNewVocabulary), for: .touchUpInside)
@@ -102,7 +107,20 @@ class GetVocabularyNameViewController: UIViewController {
         let newVocabulary = Vocabulary.init(name: textField.text!, progress: 0, succses: false, words: [])
         myVocabularies.append(newVocabulary)
         newViewController.getVocabulary(vocabulary_: myVocabularies[myVocabularies.count - 1])
+        newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
+    }
+}
+
+extension GetVocabularyNameViewController: HeaderDelegate, PopDelegate {
+    
+    func didFinishVC(controller: UIViewController) {
+        controller.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func moveBack() {
+        delegate?.didFinishVC(controller: self)
     }
 }
 

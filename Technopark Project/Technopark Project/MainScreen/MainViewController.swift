@@ -83,6 +83,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainDe
     
     func openVocabularyViewController(position: Int) {
         let newViewController = VocabularyViewController()
+        newViewController.delegate = self
         newViewController.getVocabulary(vocabulary_: myVocabularies[position])
         self.navigationController?.pushViewController(newViewController, animated: true)
     }

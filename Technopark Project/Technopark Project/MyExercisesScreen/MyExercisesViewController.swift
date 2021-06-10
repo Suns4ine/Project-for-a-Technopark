@@ -19,8 +19,7 @@ class MyExercisesViewController: UIViewController {
     
     private lazy var myExercisesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Упражнения",
                                                                                                 backButtonIsHidden: false,
-                                                                                                settingButtonIsHidden: true,
-                                                                                                crossButtonIsHidden: true))
+                                                                                                settingButtonIsHidden: true))
     
     private lazy var myExercisesCollectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -54,7 +53,7 @@ class MyExercisesViewController: UIViewController {
         
         myExercisesHeadView.pin
             .height(84)
-            .top()
+            .top(view.pin.safeArea)
             .left()
             .right()
         
