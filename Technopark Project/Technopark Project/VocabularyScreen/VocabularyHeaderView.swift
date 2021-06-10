@@ -11,7 +11,7 @@ import UIKit
 
 final class VocabularyHeaderView: UIView {
     
-    private var vocabulary: Vocabulary!
+//    private var vocabulary: Vocabulary!
     
     private let backIcon: UIImageView = {
        let icon = UIImageView()
@@ -36,18 +36,18 @@ final class VocabularyHeaderView: UIView {
         return label
     }()
     
-    private let statisticIcon: UIImageView = {
-        let icon = UIImageView()
-        icon.image = UIImage(named: "fi-rr-stats 1")
-        icon.image = icon.image?.tinted(with: .iconColor)
-        return icon
-    }()
+//    private let statisticIcon: UIImageView = {
+//        let icon = UIImageView()
+//        icon.image = UIImage(named: "fi-rr-stats 1")
+//        icon.image = icon.image?.tinted(with: .iconColor)
+//        return icon
+//    }()
     
-    init(frame: CGRect, root: UIViewController, model: VocabularyModel) {
+    init(frame: CGRect, root: UIViewController, model: Vocabulary) {
         super.init(frame: frame)
         
         titleLabel.text = model.name
-        vocabulary = model.vocabulary
+//        vocabulary = model.vocabulary
         setup()
     }
     
@@ -88,7 +88,9 @@ final class VocabularyHeaderView: UIView {
     }
     
     private func setup () {
-        [backIcon, settingIcon, titleLabel, statisticIcon].forEach{
+        [backIcon, settingIcon, titleLabel,
+         //statisticIcon
+        ].forEach{
             addSubview($0)
         }
     }

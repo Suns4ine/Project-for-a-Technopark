@@ -11,13 +11,11 @@ import UIKit
 
 class MyExercisesViewController: UIViewController {
     
-    private var exercises: [Exercises] = [.init(name: "Учить слова"),
-                                          .init(name: "Хардкор"),
-                                          .init(name: "Учить слова"),
-                                          .init(name: "Учить слова"),
-                                          .init(name: "Учить слова")]
+    weak var delegate: PopDelegate?
     
-    private lazy var myExercisesHeadView = MyExercisesHeadView(frame: .zero, root: self, model: .init(name: "Упражнения"))
+    private lazy var myExercisesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Упражнения",
+                                                                                                backButtonIsHidden: false,
+                                                                                                settingButtonIsHidden: true))
     
     private lazy var myExercisesCollectionView: UICollectionView = {
         let collectionLayout = UICollectionViewFlowLayout()
@@ -38,6 +36,7 @@ class MyExercisesViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backGroundOtherColor
         
+        myExercisesHeadView.delegate = self
         myExercisesCollectionView.delegate = self
         myExercisesCollectionView.dataSource = self
         myExercisesCollectionView.register(MyExercisesCollectionViewCell.self,
@@ -51,7 +50,7 @@ class MyExercisesViewController: UIViewController {
         
         myExercisesHeadView.pin
             .height(84)
-            .top()
+            .top(view.pin.safeArea)
             .left()
             .right()
         
@@ -69,13 +68,21 @@ class MyExercisesViewController: UIViewController {
     }
 }
 
-extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CellDelegate {
+extension MyExercisesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, MyExercisesCellDelegate, PopDelegate, HeaderDelegate {
+    
+    func didFinishVC(controller: UIViewController) {
+        controller.navigationController?.popViewController(animated: true)
+    }
+    
+    func moveBack() {
+        delegate?.didFinishVC(controller: self)
+    }
     
     func openNewController() {
         let newViewController = ChooseVocabularyViewController()
+        newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
-    
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

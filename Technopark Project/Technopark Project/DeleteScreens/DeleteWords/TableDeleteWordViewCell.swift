@@ -1,18 +1,18 @@
 //
-//  TableWordViewCell.swift
+//  TableDeleteWordViewCell.swift
 //  Technopark Project
 //
-//  Created by Vyacheslav Pronin on 25.05.2021.
+//  Created by Михаил Попов on 10.06.2021.
 //
 
 import Foundation
 import UIKit
 import PinLayout
 
-final class TableWordViewCell: UITableViewCell {
+final class TableDeleteWordViewCell: UITableViewCell {
     
-    weak var delegate: WordOpenDelegate?
-    var cellPosition: Int!
+    private let wordcheckBox = CheckBox()
+    var isChecked: Bool
     
     private let wordLabel: UILabel = {
         let label = UILabel()
@@ -47,6 +47,7 @@ final class TableWordViewCell: UITableViewCell {
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        self.isChecked = false
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
@@ -57,12 +58,6 @@ final class TableWordViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(with model: Word, model position: Int) {
-        wordLabel.text = model.name
-        translationWordLabel.text = model.translation
-        cellPosition = position
     }
     
     override func layoutSubviews() {
@@ -91,21 +86,26 @@ final class TableWordViewCell: UITableViewCell {
             .after(of: separatorView)
             .marginHorizontal(29.5)
             .sizeToFit()
+        
+        wordcheckBox.pin
+            .size(24)
+            .top(6)
+            .right(30)
+    }
+    
+    func configure(with model: Word, model position: Int) {
+        wordLabel.text = model.name
+        translationWordLabel.text = model.translation
     }
     
     private func setup() {
-        [wordLabel, translationWordLabel, separatorView, lineView].forEach { addSubview($0) }
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openWordViewController))
-        self.addGestureRecognizer(gestureRecognizer)
+        [wordLabel, translationWordLabel, separatorView, lineView, wordcheckBox].forEach { addSubview($0) }
+        wordcheckBox.addTarget(self, action: #selector(checkVocabulary), for: .touchUpInside)
     }
     
     @objc
-    private func openWordViewController(position: Int) {
-        delegate?.openWordViewController(position: cellPosition)
+    func checkVocabulary() {
+        wordcheckBox.isChecked = !wordcheckBox.isChecked
+        isChecked = !isChecked
     }
-}
-
-protocol  WordOpenDelegate: AnyObject {
-    func openWordViewController(position: Int)
 }

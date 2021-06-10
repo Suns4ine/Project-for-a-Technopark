@@ -11,6 +11,13 @@ import UIKit
 
 final class VocabularyFilledView: UIView {
     
+    weak var delegate: AddWordDelegate?
+    weak var secondDelegate: WordOpenDelegate?
+    
+    private var words:[Word]!
+    private var vocabulary: Vocabulary!
+    
+    private let addButton = UIButton()
     
     private let searhWordBar = UISearchBar()
     
@@ -30,8 +37,11 @@ final class VocabularyFilledView: UIView {
         return table
     }()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, root: UIViewController, model: Vocabulary) {
         super.init(frame: frame)
+        
+        vocabulary = model
+        words = model.words
         
         setup()
     }
@@ -45,6 +55,10 @@ final class VocabularyFilledView: UIView {
         super.layoutSubviews()
         
         addIcon.pin
+            .size(24)
+            .center()
+        
+        addButton.pin
             .size(24)
             .right(35)
             .top(48)
@@ -64,26 +78,39 @@ final class VocabularyFilledView: UIView {
     }
     
     private func setup() {
-        [searhWordBar, addIcon, tableWordView].forEach { addSubview($0)}
+        [searhWordBar, addButton, tableWordView].forEach { addSubview($0)}
+        addButton.addSubview(addIcon)
         
         tableWordView.delegate = self
         tableWordView.dataSource = self
         tableWordView.register(TableWordViewCell.self, forCellReuseIdentifier: "TableWordViewCell")
 
+        addButton.addTarget(self, action: #selector(newWord), for: .touchUpInside)
+    }
+    
+    @objc
+    private func newWord() {
+        delegate?.newWord()
     }
 }
 
 
-extension VocabularyFilledView: UITableViewDelegate, UITableViewDataSource {
+extension VocabularyFilledView: UITableViewDelegate, UITableViewDataSource, WordOpenDelegate {
+    
+    func openWordViewController(position: Int) {
+        secondDelegate?.openWordViewController(position: position)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return words.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: "TableWordViewCell",
                 for: indexPath) as? TableWordViewCell else { return .init() }
+        cell.configure(with: words[indexPath.row], model: indexPath.row)
+        cell.delegate = self
         return cell
     }
     

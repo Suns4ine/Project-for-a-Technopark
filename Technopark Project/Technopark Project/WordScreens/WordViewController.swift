@@ -12,10 +12,18 @@ import UIKit
 class WordViewController: UIViewController, UIScrollViewDelegate {
     
     private let arrayButton = ["Редактировать", "Удалить"]
-    private var word: Word!
-    private var vocabulary = Vocabulary(name: "Погода", progress: 12, succses: false, words: [Word(name: "Animal", translation: "Животное"), Word(name: "Build", translation: "Строить")], learnedWords: [], misspelledWords: [], dateCreate: Date(), dateOfChange: Date(), numberOfAttempts: 0)//vocabulary: Vocabulary!// Vocabulary!
     
-    private lazy var headerWordView = HeaderWordView(frame: .zero, root: self, model: .init(name: "Погода", vocabulary: vocabulary))
+    weak var delegate: PopDelegate?
+    var vocabulary: Vocabulary!
+    var word: Word!
+    
+    func getVocabulary (vocabulary_: Vocabulary) {
+        vocabulary = vocabulary_
+    }
+    
+    private lazy var headerView = HeaderView(frame: .zero, root: self, model: .init(name: vocabulary.name,
+                                                                                   backButtonIsHidden: false,
+                                                                                   settingButtonIsHidden: true))
     
     private let wordLabel: UILabel = {
         let label = UILabel()
@@ -73,26 +81,30 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        word = .init(name: "Rain", translation: "Дождь", anotherTranslation: nil, partOfSpeech: nil, examples: nil, otherMeanings: nil)
+        view.backgroundColor = .backGroundOtherColor
         
+        headerView.delegate = self
         wordTabelView.delegate = self
         wordTabelView.dataSource = self
         wordTabelView.register(WordTabelViewCell.self, forCellReuseIdentifier: "WordTabelViewCell")
-        view.backgroundColor = .backGroundOtherColor
         
         setup()
+    }
+    
+    func configure(wordNumber: Int) {
+        self.word = vocabulary.words[wordNumber]
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        headerWordView.pin
-            .top()
+        headerView.pin
+            .top(view.pin.safeArea)
             .horizontally()
             .height(84)
         
         wordLabel.pin
-            .below(of: headerWordView)
+            .below(of: headerView)
             .marginVertical(73)
             .hCenter()
             .sizeToFit()
@@ -124,12 +136,8 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
 
     }
     
-    func configure(word: Word) {
-        self.word = word
-    }
-    
     private func setup() {
-        [headerWordView, wordLabel, underlineView, titleTranslationLabel,
+        [headerView, wordLabel, underlineView, titleTranslationLabel,
          translationWordLabel, wordTabelView].forEach { view.addSubview($0) }
         
         titleTranslationLabel.text = "Перевод:"
@@ -139,7 +147,12 @@ class WordViewController: UIViewController, UIScrollViewDelegate {
 }
 
 
-extension WordViewController: UITableViewDelegate, UITableViewDataSource {
+extension WordViewController: UITableViewDelegate, UITableViewDataSource, HeaderDelegate {
+    
+    func moveBack() {
+        delegate?.didFinishVC(controller: self)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }

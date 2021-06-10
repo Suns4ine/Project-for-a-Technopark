@@ -14,13 +14,14 @@ enum PartOfSpeech: String {
     case pronoun = "Местоимение"
     case numerals = "Числительные"
     case adverb = "Наречие"
+    case none = ""
 }
 
 struct Word {
     var name: String
     var translation: String
-    var anotherTranslation: [String]?
-    var partOfSpeech: PartOfSpeech?
-    var examples: [String : String]?
-    var otherMeanings: [String]?
+//    var anotherTranslation: [String]?
+//    var partOfSpeech: PartOfSpeech?
+//    var examples: [String : String]?
+//    var otherMeanings: [String]?
 }

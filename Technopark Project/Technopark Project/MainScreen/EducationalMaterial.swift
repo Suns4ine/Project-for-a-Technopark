@@ -28,4 +28,13 @@ extension Array {
         }
         return newArr
     }
+    
+    func newArrayEducation(ar: [Exercises]) -> [EducationalMaterial] {
+        var newArr = [EducationalMaterial]()
+        
+        for element in ar {
+            newArr.append(.exercises(element))
+        }
+        return newArr
+    }
 }

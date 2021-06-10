@@ -11,7 +11,7 @@ import UIKit
 
 final class HeaderWordView: UIView {
     
-    private var vocabulary: Vocabulary!
+    private let backButton = UIButton()
     
     private let backIcon: UIImageView = {
        let icon = UIImageView()
@@ -20,12 +20,12 @@ final class HeaderWordView: UIView {
         return icon
     }()
     
-    private let settingIcon: UIImageView = {
-       let icon = UIImageView()
-        icon.image = UIImage(named: "fi-rr-settings")
-        icon.image = icon.image?.tinted(with: .iconColor)
-        return icon
-    }()
+//    private let settingIcon: UIImageView = {
+//       let icon = UIImageView()
+//        icon.image = UIImage(named: "fi-rr-settings")
+//        icon.image = icon.image?.tinted(with: .iconColor)
+//        return icon
+//    }()
     
     private let titleLabel: UILabel = {
        let label = UILabel()
@@ -36,18 +36,18 @@ final class HeaderWordView: UIView {
         return label
     }()
     
-    private let toShareIcon: UIImageView = {
-        let icon = UIImageView()
-        icon.image = UIImage(named: "fi-rr-share 1")
-        icon.image = icon.image?.tinted(with: .iconColor)
-        return icon
-    }()
+//    private let toShareIcon: UIImageView = {
+//        let icon = UIImageView()
+//        icon.image = UIImage(named: "fi-rr-share 1")
+//        icon.image = icon.image?.tinted(with: .iconColor)
+//        return icon
+//    }()
     
-    init(frame: CGRect, root: UIViewController, model: VocabularyModel) {
+    init(frame: CGRect, root: UIViewController, model: Vocabulary) {
         super.init(frame: frame)
         
         titleLabel.text = model.name
-        vocabulary = model.vocabulary
+        
         setup()
     }
     
@@ -59,6 +59,10 @@ final class HeaderWordView: UIView {
         super.layoutSubviews()
         
         backIcon.pin
+            .size(24)
+            .center()
+        
+        backButton.pin
             .size(24)
             .left(21)
             .top(57)
@@ -82,7 +86,7 @@ final class HeaderWordView: UIView {
     }
     
     private func setup () {
-        [backIcon, settingIcon, titleLabel, toShareIcon].forEach{ addSubview($0) }
-        //self.backgroundColor = .otherColor
+        [backButton, titleLabel].forEach{ addSubview($0) }
+        backButton.addSubview(backIcon)
     }
 }
