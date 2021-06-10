@@ -13,6 +13,7 @@ class LessonViewController: UIViewController {
     
     private let headerView = LessonHeaderView()
     private var vocabulary: Vocabulary!
+    weak var delegate: PopDelegate?
     
     private let counterLabel: UILabel = {
         let label = UILabel()
@@ -54,6 +55,7 @@ class LessonViewController: UIViewController {
         view.backgroundColor = .backGroundLessonColor
         //headerView.backgroundColor = .green
         
+        headerView.delegate = self
         lessonCollectionView.delegate = self
         lessonCollectionView.dataSource = self
         lessonCollectionView.register(LessonCollectionViewCell.self, forCellWithReuseIdentifier: "LessonCollectionViewCell")
@@ -92,13 +94,18 @@ class LessonViewController: UIViewController {
         [lessonCollectionView, questionIcon, headerView, counterLabel, translationLabel].forEach { self.view.addSubview($0) }
     }
     
-    func configure(with model: LessonViewModel) {
-        self.vocabulary = model.vocabulary
+    func configure(with model: Vocabulary) {
+        self.vocabulary = model
     }
 }
 
 
-extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource, HeaderDelegate {
+    
+    func moveBack() {
+        delegate?.didFinishVC(controller: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 18//return vocabulary.words.count
     }

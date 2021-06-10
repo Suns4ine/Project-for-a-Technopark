@@ -1,18 +1,18 @@
 //
-//  MyVocabulariesCollectionViewCell.swift
+//  ChooseVocabularyCollectionViewCell.swift
 //  Technopark Project
 //
-//  Created by Михаил Попов on 23.05.2021.
+//  Created by Михаил Попов on 11.06.2021.
 //
 
 import Foundation
 import UIKit
 import PinLayout
 
-final class MyVocabulariesCollectionViewCell: UICollectionViewCell {
+final class ChooseVocabularyCollectionViewCell: UICollectionViewCell {
     
     private var cellPosition: Int!
-    weak var delegate: VocabularyDelegate?
+    weak var delegate: ChooseVocabularyDelegate?
     private var vocabulary: Vocabulary!
     
     private let titleLabel: UILabel = {
@@ -84,13 +84,13 @@ final class MyVocabulariesCollectionViewCell: UICollectionViewCell {
         titleLabel.text = model.name
         subTitleLabel.text = "\(model.progress)%"
         cellPosition = position
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openVocabularyViewController))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openLessonViewController))
         self.addGestureRecognizer(gestureRecognizer)
     }
     
     @objc
-    private func openVocabularyViewController(position: Int) {
-        delegate?.openVocabularyViewController(position: cellPosition)
+    private func openLessonViewController(position: Int) {
+        delegate?.openLessonViewController(position: cellPosition)
     }
     
     private func setup() {
@@ -105,6 +105,6 @@ final class MyVocabulariesCollectionViewCell: UICollectionViewCell {
     }
 }
 
-protocol  VocabularyDelegate: AnyObject {
-    func openVocabularyViewController(position: Int)
+protocol  ChooseVocabularyDelegate: AnyObject {
+    func openLessonViewController(position: Int)
 }

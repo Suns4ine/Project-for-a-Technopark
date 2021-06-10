@@ -12,6 +12,7 @@ import PinLayout
 final class TableDeleteWordViewCell: UITableViewCell {
     
     private let wordcheckBox = CheckBox()
+    var isChecked: Bool
     
     private let wordLabel: UILabel = {
         let label = UILabel()
@@ -46,6 +47,7 @@ final class TableDeleteWordViewCell: UITableViewCell {
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        self.isChecked = false
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
@@ -98,5 +100,12 @@ final class TableDeleteWordViewCell: UITableViewCell {
     
     private func setup() {
         [wordLabel, translationWordLabel, separatorView, lineView, wordcheckBox].forEach { addSubview($0) }
+        wordcheckBox.addTarget(self, action: #selector(checkVocabulary), for: .touchUpInside)
+    }
+    
+    @objc
+    func checkVocabulary() {
+        wordcheckBox.isChecked = !wordcheckBox.isChecked
+        isChecked = !isChecked
     }
 }

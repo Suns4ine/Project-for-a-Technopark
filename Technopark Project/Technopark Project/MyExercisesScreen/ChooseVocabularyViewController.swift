@@ -11,6 +11,8 @@ import UIKit
 
 class ChooseVocabularyViewController: UIViewController {
     
+    weak var delegate: PopDelegate?
+    
     private lazy var myExercisesHeadView = HeaderView(frame: .zero, root: self, model: .init(name: "Выберете словарь",
                                                                                                 backButtonIsHidden: false,
                                                                                                 settingButtonIsHidden: true))
@@ -39,10 +41,11 @@ class ChooseVocabularyViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backGroundOtherColor
         
+        myExercisesHeadView.delegate = self
         myVocabulariesCollectionView.delegate = self
         myVocabulariesCollectionView.dataSource = self
-        myVocabulariesCollectionView.register(MyVocabulariesCollectionViewCell.self,
-                                              forCellWithReuseIdentifier: "MyVocabulariesCollectionViewCell")
+        myVocabulariesCollectionView.register(ChooseVocabularyCollectionViewCell.self,
+                                              forCellWithReuseIdentifier: "ChooseVocabularyCollectionViewCell")
         
         setup()
     }
@@ -77,7 +80,22 @@ class ChooseVocabularyViewController: UIViewController {
     }
 }
 
-extension ChooseVocabularyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ChooseVocabularyViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChooseVocabularyDelegate, PopDelegate, HeaderDelegate {
+    
+    func didFinishVC(controller: UIViewController) {
+        controller.navigationController?.popViewController(animated: true)
+    }
+    
+    func moveBack() {
+        delegate?.didFinishVC(controller: self)
+    }
+    
+    func openLessonViewController(position: Int) {
+        let newViewController = LessonViewController()
+        newViewController.configure(with: myVocabularies[position])
+        newViewController.delegate = self
+        self.navigationController?.pushViewController(newViewController, animated: true)
+    }
     
     //Колличество ячеек
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -87,10 +105,11 @@ extension ChooseVocabularyViewController: UICollectionViewDelegate, UICollection
     //Вызов нужной ячейки
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyVocabulariesCollectionViewCell",
-                                                            for: indexPath) as? MyVocabulariesCollectionViewCell else { return .init() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChooseVocabularyCollectionViewCell",
+                                                            for: indexPath) as? ChooseVocabularyCollectionViewCell else { return .init() }
         
         cell.configure(with: myVocabularies[indexPath.row], model: indexPath.row)
+        cell.delegate = self
         return cell
     }
     

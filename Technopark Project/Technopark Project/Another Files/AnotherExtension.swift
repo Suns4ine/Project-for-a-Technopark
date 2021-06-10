@@ -108,17 +108,17 @@ class CheckBox: UIButton {
             }
         }
     }
-        
-    @objc func buttonClicked(sender: UIButton) {
-        if sender == self {
-            isChecked = !isChecked
-        }
-    }
+//        
+//    @objc func buttonClicked(sender: UIButton) {
+//        if sender == self {
+//            isChecked = !isChecked
+//        }
+//    }
     
     private func setup() {
         [checkedIcon, uncheckedIcon].forEach { self.addSubview($0) }
         
-        self.addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
+//        self.addTarget(self, action:#selector(buttonClicked(sender:)), for: .touchUpInside)
         self.isChecked = false
     }
 }

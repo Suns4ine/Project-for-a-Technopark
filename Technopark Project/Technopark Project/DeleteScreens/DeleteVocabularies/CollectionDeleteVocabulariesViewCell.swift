@@ -12,6 +12,7 @@ import PinLayout
 final class CollectionDeleteVocabulariesViewCell: UICollectionViewCell {
     
     private let checkbox = CheckBox()
+    var isChecked: Bool
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -31,8 +32,10 @@ final class CollectionDeleteVocabulariesViewCell: UICollectionViewCell {
     
     
     override init(frame: CGRect) {
+        self.isChecked = false
         super.init(frame: frame)
-    
+        
+        
         setup()
     }
     
@@ -67,6 +70,7 @@ final class CollectionDeleteVocabulariesViewCell: UICollectionViewCell {
     
     private func setup() {
         [titleLabel, subTitleLabel, checkbox].forEach { addSubview($0) }
+        checkbox.addTarget(self, action: #selector(checkVocabulary), for: .touchUpInside)
         
         layer.cornerRadius = 8
         backgroundColor = .buttonColor
@@ -74,5 +78,11 @@ final class CollectionDeleteVocabulariesViewCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
+    }
+    
+    @objc
+    func checkVocabulary() {
+        checkbox.isChecked = !checkbox.isChecked
+        isChecked = !isChecked
     }
 }

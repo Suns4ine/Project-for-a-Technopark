@@ -19,4 +19,7 @@ struct Vocabulary {
 //    var numberOfAttempts: Int
 }
 
-var myVocabularies: [Vocabulary] = [.init(name: "Лес", progress: 56, succses: false, words: [])]
+var myVocabularies: [Vocabulary] = [.init(name: "Лес", progress: 56, succses: false, words: []),
+                                    .init(name: "Реки", progress: 100, succses: false, words: []),
+                                    .init(name: "Животные", progress: 56, succses: false, words: []),
+                                    .init(name: "Птицы", progress: 10, succses: false, words: [])]

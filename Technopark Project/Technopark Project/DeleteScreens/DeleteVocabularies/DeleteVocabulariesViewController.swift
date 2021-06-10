@@ -117,7 +117,17 @@ class DeleteVocabulariesViewController: UIViewController {
      
     @objc
     private func deleteVocabulary() {
-        
+        var k = 0
+        var changedVocabularies: [Vocabulary] = []
+        for cell in myVocabulariesCollectionView.visibleCells as! [CollectionDeleteVocabulariesViewCell] {
+            if !cell.isChecked {
+                changedVocabularies.append(myVocabularies[k])
+            }
+            k += 1
+        }
+        myVocabularies = changedVocabularies
+        let newViewController = MainViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
 }
 

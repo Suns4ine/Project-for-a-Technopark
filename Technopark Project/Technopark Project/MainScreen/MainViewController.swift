@@ -90,6 +90,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainDe
     
     func openLessonViewController(position: Int) {
         let newViewController = ChooseVocabularyViewController()
+        newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
@@ -101,6 +102,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainDe
     
     func newExercisesController() {
         let newViewController = MyExercisesViewController()
+        newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
