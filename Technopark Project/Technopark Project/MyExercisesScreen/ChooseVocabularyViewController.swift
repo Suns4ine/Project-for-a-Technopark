@@ -92,7 +92,7 @@ extension ChooseVocabularyViewController: UICollectionViewDelegate, UICollection
     
     func openLessonViewController(position: Int) {
         let newViewController = LessonViewController()
-        newViewController.configure(with: myVocabularies[position])
+        newViewController.configure(with: .init(vocabulary: myVocabularies[position]))//myVocabularies[position])
         newViewController.delegate = self
         self.navigationController?.pushViewController(newViewController, animated: true)
     }

@@ -105,7 +105,7 @@ class GetVocabularyNameViewController: UIViewController, UITextFieldDelegate {
     @objc
     private func addNewVocabulary() {
         let newViewController = VocabularyViewController()
-        let newVocabulary = Vocabulary.init(name: textField.text!, progress: 0, succses: false, words: [])
+        let newVocabulary = Vocabulary.init(name: textField.text!, progress: 0, succses: false, words: [], learnedWords: [], misspelledWords: [], dateCreate: Date.init(), dateOfChange: Date.init(), numberOfAttempts: 0)
         myVocabularies.append(newVocabulary)
         newViewController.getVocabulary(vocabulary_: myVocabularies[myVocabularies.count - 1])
         self.navigationController?.pushViewController(newViewController, animated: true)

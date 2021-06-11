@@ -11,7 +11,7 @@ import PinLayout
 
 class LessonViewController: UIViewController {
     
-    private let headerView = LessonHeaderView()
+    private lazy var headerView = LessonHeaderView(frame: .zero, rootController: self)
     private var vocabulary: Vocabulary!
     weak var delegate: PopDelegate?
     
@@ -53,12 +53,11 @@ class LessonViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .backGroundLessonColor
-        //headerView.backgroundColor = .green
         
-        headerView.delegate = self
         lessonCollectionView.delegate = self
         lessonCollectionView.dataSource = self
         lessonCollectionView.register(LessonCollectionViewCell.self, forCellWithReuseIdentifier: "LessonCollectionViewCell")
+        
         setup()
     }
     
@@ -73,7 +72,7 @@ class LessonViewController: UIViewController {
         lessonCollectionView.pin
             .left()
             .right()
-            .height(self.view.frame.height * 0.2)
+            .height(170)//(self.view.frame.height * 0.2)
             .below(of: headerView)
             .marginVertical(5)
         
@@ -92,22 +91,27 @@ class LessonViewController: UIViewController {
     
     private func setup() {
         [lessonCollectionView, questionIcon, headerView, counterLabel, translationLabel].forEach { self.view.addSubview($0) }
+//        counterLabel.text = "\(lessonCollectionView.indexPath(for: LessonCollectionViewCell.self)) /\(vocabulary.words.count + vocabulary.misspelledWords.count)"
     }
     
-    func configure(with model: Vocabulary) {
-        self.vocabulary = model
+    func configure(with model: LessonViewModel) {
+        self.vocabulary = model.vocabulary
+    }
+    
+    private func wordCheck(checkingWord: Word, word: String) {
+        if word.lowercased() == checkingWord.name.lowercased() {
+            vocabulary.words = vocabulary.words.filter{ $0.name != checkingWord.name }
+            vocabulary.learnedWords.append(checkingWord)
+        } else {
+            vocabulary.misspelledWords.append(checkingWord)
+        }
     }
 }
 
 
-extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource, HeaderDelegate {
-    
-    func moveBack() {
-        delegate?.didFinishVC(controller: self)
-    }
-    
+extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HeaderDelegate  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 18//return vocabulary.words.count
+        return 10//return vocabulary.words.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -120,11 +124,11 @@ extension LessonViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     //Размеры ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width * 0.85, height: collectionView.frame.width - 10)
+        return CGSize(width: collectionView.frame.width - 40, height: collectionView.frame.height - 10)//CGSize(width: 300, height: 160)
     }
     
-    //Расстояние между ячейками
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return CGFloat(8)
-    }
+//    //Расстояние между ячейками
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return CGFloat(8)
+//    }
 }

@@ -2,7 +2,7 @@
 //  LessonViewModel.swift
 //  Technopark Project
 //
-//  Created by Vyacheslav Pronin on 23.05.2021.
+//  Created by Vyacheslav Pronin on 11.06.2021.
 //
 
 import Foundation

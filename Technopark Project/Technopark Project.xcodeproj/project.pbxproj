@@ -56,6 +56,7 @@
 		3538E7C3264E35B400D8CB58 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538E7C2264E35B400D8CB58 /* UIColorExtension.swift */; };
 		3540644A2659E45E00806581 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354064492659E45E00806581 /* LessonViewController.swift */; };
 		35406453265A0BAD00806581 /* LessonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35406452265A0BAD00806581 /* LessonHeaderView.swift */; };
+		3565AAA62673719200B83B7F /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565AAA52673719200B83B7F /* LessonViewModel.swift */; };
 		3580848B26659AF600852828 /* VocabularyEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580848526659AF600852828 /* VocabularyEmptyView.swift */; };
 		3580848D26659AF600852828 /* VocabularyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580848726659AF600852828 /* VocabularyViewController.swift */; };
 		3580848F26659AF600852828 /* VocabularyFilledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3580848926659AF600852828 /* VocabularyFilledView.swift */; };
@@ -123,6 +124,7 @@
 		3538E7C2264E35B400D8CB58 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		354064492659E45E00806581 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		35406452265A0BAD00806581 /* LessonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonHeaderView.swift; sourceTree = "<group>"; };
+		3565AAA52673719200B83B7F /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		3580848526659AF600852828 /* VocabularyEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabularyEmptyView.swift; sourceTree = "<group>"; };
 		3580848726659AF600852828 /* VocabularyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabularyViewController.swift; sourceTree = "<group>"; };
 		3580848926659AF600852828 /* VocabularyFilledView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabularyFilledView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				354064492659E45E00806581 /* LessonViewController.swift */,
 				35406452265A0BAD00806581 /* LessonHeaderView.swift */,
 				35CE68A9265A77B4007C37EB /* LessonCollectionViewCell.swift */,
+				3565AAA52673719200B83B7F /* LessonViewModel.swift */,
 			);
 			path = LessonScreen;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				287B65832672558800FCCF61 /* DeleteHeaderView.swift in Sources */,
 				35B0AED6261DCFBB00CBBBE0 /* MainViewController.swift in Sources */,
 				35B0AED2261DCFBB00CBBBE0 /* AppDelegate.swift in Sources */,
+				3565AAA62673719200B83B7F /* LessonViewModel.swift in Sources */,
 				28FEC4F3265ADFD200CED56C /* MyVocabulariesCollectionViewCell.swift in Sources */,
 				350FDF662657E65C00F63784 /* MainHeaderView.swift in Sources */,
 				3580849026659AF600852828 /* TableWordViewCell.swift in Sources */,
