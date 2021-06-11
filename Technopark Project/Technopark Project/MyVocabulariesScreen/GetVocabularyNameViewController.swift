@@ -9,7 +9,7 @@ import Foundation
 import PinLayout
 import UIKit
 
-class GetVocabularyNameViewController: UIViewController{
+class GetVocabularyNameViewController: UIViewController, UITextFieldDelegate {
     
     weak var delegate: PopDelegate?
     
@@ -26,7 +26,7 @@ class GetVocabularyNameViewController: UIViewController{
         return icon
     }()
     
-    private let textField:UITextField = {
+    private let textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Новый словарь"
         textField.font = .standartFont
@@ -38,7 +38,7 @@ class GetVocabularyNameViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backGroundSettingColor
-        
+        self.textField.delegate = self
         setup()
     }
     
@@ -69,6 +69,7 @@ class GetVocabularyNameViewController: UIViewController{
             .right(19)
         
     }
+    
     private func setup(){
         [myVocabulariesHeadView, continueButton, textField].forEach{
             view.addSubview($0)
@@ -80,25 +81,25 @@ class GetVocabularyNameViewController: UIViewController{
         continueButton.isEnabled = false
         continueButton.isHidden = true
         
-        textField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(editingChanged), for: .editingDidEndOnExit)
         
         continueButton.addTarget(self, action: #selector(addNewVocabulary), for: .touchUpInside)
     }
     
     @objc
     private func editingChanged(){
-        if textField.text?.trim() == ""{
+        if textField.text?.trim() == "" {
             textField.text = textField.text?.trim()
             return
         }
-        guard
-            let field = textField.text, !field.isEmpty
-        else {
+        guard let field = textField.text, !field.isEmpty else {
             continueButton.isEnabled = false
+//            textField.resignFirstResponder()
             return
         }
         continueButton.isEnabled = true
         continueButton.isHidden = false
+        
     }
     
     @objc
@@ -109,6 +110,7 @@ class GetVocabularyNameViewController: UIViewController{
         newViewController.getVocabulary(vocabulary_: myVocabularies[myVocabularies.count - 1])
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
+    
 }
 
 extension GetVocabularyNameViewController: HeaderDelegate {

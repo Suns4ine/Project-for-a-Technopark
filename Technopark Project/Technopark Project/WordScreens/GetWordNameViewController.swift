@@ -99,8 +99,8 @@ class GetWordNameViewController: UIViewController {
         continueButton.isEnabled = false
         continueButton.isHidden = true
         
-        nameTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
-        translationTextField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        nameTextField.addTarget(self, action: #selector(editingChanged), for: .editingDidEndOnExit)
+        translationTextField.addTarget(self, action: #selector(editingChanged), for: .editingDidEndOnExit)
         
         continueButton.addTarget(self, action: #selector(addNewWord), for: .touchUpInside)
     }
