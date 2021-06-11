@@ -10,10 +10,11 @@ import UIKit
 import PinLayout
 
 
-final class LessonCollectionViewCell: UICollectionViewCell {
+final class LessonCollectionViewCell: UICollectionViewCell, HorizontalEdge {
     
     private var word: Word!
     private var rootController: UIViewController!
+    private var widthWord: Int!
     
     private let volumeIcon: UIImageView = {
         let imageView = UIImageView()
@@ -34,6 +35,7 @@ final class LessonCollectionViewCell: UICollectionViewCell {
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         textField.delegate = self as? UITextFieldDelegate
+        textField.backgroundColor = .lessonTextFieldColor
         return textField
     }()
 
@@ -49,21 +51,23 @@ final class LessonCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        volumeIcon.pin
-            .size(24)
-            .top(12)
-            .right(16)
+//        volumeIcon.pin
+//            .size(24)
+//            .top(12)
+//            .right(16)
 
         textField.pin
-            .left(12)
-            .hCenter()
+            .horizontally(12)
+            .height(52)
+            .top((self.bounds.height / 2) - 26)
             //.sizeToFit()
-            .size(20)
+            //.size(20)
     }
 
     func configure(with model: Word, root: UIViewController) {
         word = model
         rootController = root
+        widthWord = 8 + Int(Double(model.name.count) * 15.25) >= Int(self.bounds.width - 24) ? Int(self.bounds.width - 24) :  8 + Int(Double(model.name.count) * 15.25)
     }
 
     private func setup() {

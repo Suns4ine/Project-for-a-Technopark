@@ -19,6 +19,7 @@ extension UIColor {
     static let backGroundLessonColor = UIColor(hex: 0x313844)
     static let backGroundOtherColor = UIColor(hex: 0x7087A4)
     static let backGroundSettingColor = UIColor(hex: 0x597387)
+    static let lessonTextFieldColor = UIColor(hex: 0x2A4158)
     static let errorColor = UIColor(hex: 0xcc0000)
     static let successColor = UIColor(hex: 0x3A9063)
     static let otherColor = UIColor(hex: 0xf0ff00)

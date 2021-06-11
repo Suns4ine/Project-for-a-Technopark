@@ -8,4 +8,6 @@
 import Foundation
 
 struct Word {
+    var name: String
+    var translation: String
 }

@@ -90,10 +90,20 @@ class LessonViewController: UIViewController {
     
     private func setup() {
         [lessonCollectionView, questionIcon, headerView, counterLabel, translationLabel].forEach { self.view.addSubview($0) }
+//        counterLabel.text = "\(lessonCollectionView.indexPath(for: LessonCollectionViewCell.self)) /\(vocabulary.words.count + vocabulary.misspelledWords.count)"
     }
     
     func configure(with model: LessonViewModel) {
         self.vocabulary = model.vocabulary
+    }
+    
+    private func wordCheck(checkingWord: Word, word: String) {
+        if word.lowercased() == checkingWord.name.lowercased() {
+            vocabulary.words = vocabulary.words.filter{ $0.name != checkingWord.name }
+            vocabulary.learnedWords.append(checkingWord)
+        } else {
+            vocabulary.misspelledWords.append(checkingWord)
+        }
     }
 }
 
